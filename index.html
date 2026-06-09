@@ -602,6 +602,10 @@
           <button id="checkout-overlay-close-btn" type="button" onclick="closeCheckoutModal()" class="hidden border border-brandGold text-brandGold font-semibold text-xs px-6 py-2.5 rounded-full hover:bg-brandGold hover:text-brandBlack transition-all">
             Back to Site
           </button>
+          <!-- Cancel processing button -->
+          <button id="checkout-overlay-cancel-btn" type="button" onclick="cancelCheckoutProcess()" class="border border-red-500/50 hover:border-red-500 text-red-500 hover:text-white font-semibold text-xs px-6 py-2.5 rounded-full hover:bg-red-500/10 transition-all">
+            Cancel &amp; Return
+          </button>
         </div>
 
         <div class="text-center space-y-2">
@@ -746,11 +750,16 @@
             </div>
           </div>
 
-          <!-- Action Button -->
-          <button type="submit" id="checkout-submit-btn" class="w-full bg-gradient-to-r from-brandGold to-brandGoldLight hover:from-brandPurple hover:to-brandPurpleDark text-brandBlack hover:text-white font-extrabold py-3.5 rounded-xl shadow-lg hover:shadow-brandPurple/40 transition-all text-sm tracking-wide flex items-center justify-center space-x-2">
-            <i class="fa-solid fa-lock text-sm"></i>
-            <span id="submit-btn-text">Pay $0.00 via Stripe</span>
-          </button>
+          <!-- Buttons -->
+          <div class="grid grid-cols-3 gap-3">
+            <button type="button" onclick="closeCheckoutModal()" class="col-span-1 border border-brandGold/30 text-brandGold hover:bg-brandGold/5 font-semibold py-3.5 rounded-xl transition-all text-sm tracking-wide text-center">
+              Cancel
+            </button>
+            <button type="submit" id="checkout-submit-btn" class="col-span-2 bg-gradient-to-r from-brandGold to-brandGoldLight hover:from-brandPurple hover:to-brandPurpleDark text-brandBlack hover:text-white font-extrabold py-3.5 rounded-xl shadow-lg hover:shadow-brandPurple/40 transition-all text-sm tracking-wide flex items-center justify-center space-x-2">
+              <i class="fa-solid fa-lock text-sm"></i>
+              <span id="submit-btn-text">Pay $0.00 via Stripe</span>
+            </button>
+          </div>
         </form>
       </div>
 
@@ -1573,6 +1582,18 @@
 
     // --- CHECKOUT MODAL LOGIC ---
     let activePaymentMethod = 'stripe';
+    let checkoutTimers = [];
+
+    function clearCheckoutTimers() {
+      checkoutTimers.forEach(timer => clearTimeout(timer));
+      checkoutTimers = [];
+    }
+
+    function cancelCheckoutProcess() {
+      clearCheckoutTimers();
+      const overlay = document.getElementById('checkout-overlay');
+      overlay.classList.add('hidden');
+    }
 
     function setPaymentMethod(method) {
       activePaymentMethod = method;
@@ -1611,19 +1632,19 @@
         btnStripe.className = activeClass;
         secStripe.classList.remove('hidden');
         cardInputs.forEach(input => input.required = true);
-        submitBtn.className = "w-full bg-gradient-to-r from-brandGold to-brandGoldLight hover:from-brandPurple hover:to-brandPurpleDark text-brandBlack hover:text-white font-extrabold py-3.5 rounded-xl shadow-lg hover:shadow-brandPurple/40 transition-all text-sm tracking-wide flex items-center justify-center space-x-2";
+        submitBtn.className = "col-span-2 bg-gradient-to-r from-brandGold to-brandGoldLight hover:from-brandPurple hover:to-brandPurpleDark text-brandBlack hover:text-white font-extrabold py-3.5 rounded-xl shadow-lg hover:shadow-brandPurple/40 transition-all text-sm tracking-wide flex items-center justify-center space-x-2";
         btnText.innerText = `Pay ${totalText} via Stripe`;
         if (lockIcon) lockIcon.className = "fa-solid fa-lock text-sm";
       } else if (method === 'alternative') {
         btnAlternative.className = activeClass;
         secAlternative.classList.remove('hidden');
-        submitBtn.className = "w-full bg-gradient-to-r from-brandGold to-brandGoldLight hover:from-brandPurple hover:to-brandPurpleDark text-brandBlack hover:text-white font-extrabold py-3.5 rounded-xl shadow-lg hover:shadow-brandPurple/40 transition-all text-sm tracking-wide flex items-center justify-center space-x-2";
+        submitBtn.className = "col-span-2 bg-gradient-to-r from-brandGold to-brandGoldLight hover:from-brandPurple hover:to-brandPurpleDark text-brandBlack hover:text-white font-extrabold py-3.5 rounded-xl shadow-lg hover:shadow-brandPurple/40 transition-all text-sm tracking-wide flex items-center justify-center space-x-2";
         btnText.innerText = `Submit Order (${totalText})`;
         if (lockIcon) lockIcon.className = "fa-solid fa-circle-check text-sm";
       } else if (method === 'whatsapp') {
         btnWhatsapp.className = activeClass;
         secWhatsapp.classList.remove('hidden');
-        submitBtn.className = "w-full bg-[#25D366] hover:bg-[#20ba5a] text-white font-extrabold py-3.5 rounded-xl shadow-lg hover:shadow-green-500/30 transition-all text-sm tracking-wide flex items-center justify-center space-x-2";
+        submitBtn.className = "col-span-2 bg-[#25D366] hover:bg-[#20ba5a] text-white font-extrabold py-3.5 rounded-xl shadow-lg hover:shadow-green-500/30 transition-all text-sm tracking-wide flex items-center justify-center space-x-2";
         btnText.innerText = `Send Order via WhatsApp`;
         if (lockIcon) lockIcon.className = "fa-brands fa-whatsapp text-sm";
       }
@@ -1663,6 +1684,7 @@
     }
 
     function closeCheckoutModal() {
+      clearCheckoutTimers();
       checkoutModalOverlay.classList.remove('opacity-100');
       setTimeout(() => {
         checkoutModalOverlay.classList.add('hidden');
@@ -1738,56 +1760,62 @@
 
       } else {
         // Stripe Card or Alternative Transfer
+        clearCheckoutTimers();
         overlay.classList.remove('hidden');
         spinner.classList.remove('hidden');
         successIcon.classList.add('hidden');
         overlayCloseBtn.classList.add('hidden');
+        document.getElementById('checkout-overlay-cancel-btn').classList.remove('hidden');
 
         if (activePaymentMethod === 'stripe') {
           statusTitle.innerText = "Processing Stripe Payment...";
           statusDesc.innerText = "Connecting to Stripe secure gateway...";
 
-          setTimeout(() => {
+          checkoutTimers.push(setTimeout(() => {
             statusDesc.innerText = "Authorizing credit card transaction...";
-          }, 1500);
+          }, 1500));
 
-          setTimeout(() => {
+          checkoutTimers.push(setTimeout(() => {
             statusDesc.innerText = "Finalizing Stripe payment charges...";
-          }, 3000);
+          }, 3000));
 
-          setTimeout(() => {
+          checkoutTimers.push(setTimeout(() => {
             // Success
             spinner.classList.add('hidden');
             successIcon.classList.remove('hidden');
             statusTitle.innerText = "Payment Successful!";
             statusDesc.innerHTML = `Thank you, ${name}! Your Stripe payment was processed successfully. A confirmation receipt has been sent to your phone.`;
             overlayCloseBtn.classList.remove('hidden');
+            document.getElementById('checkout-overlay-cancel-btn').classList.add('hidden');
 
             cart = [];
             saveCart();
             updateCartUI();
-          }, 4500);
+            clearCheckoutTimers();
+          }, 4500));
 
         } else if (activePaymentMethod === 'alternative') {
           statusTitle.innerText = "Submitting Order...";
           statusDesc.innerText = "Registering order details in salon database...";
 
-          setTimeout(() => {
+          checkoutTimers.push(setTimeout(() => {
             statusDesc.innerText = "Awaiting verification for bank transfer...";
-          }, 1500);
+          }, 1500));
 
-          setTimeout(() => {
+          checkoutTimers.push(setTimeout(() => {
             // Success
             spinner.classList.add('hidden');
             successIcon.classList.remove('hidden');
             statusTitle.innerText = "Order Reserved!";
             statusDesc.innerHTML = `Thank you, ${name}! Your order has been reserved. Please ensure you transfer Zelle/Cash App payments within 24 hours to confirm your purchase.`;
             overlayCloseBtn.classList.remove('hidden');
+            document.getElementById('checkout-overlay-cancel-btn').classList.add('hidden');
 
             cart = [];
             saveCart();
             updateCartUI();
-          }, 3000);
+            clearCheckoutTimers();
+          }, 3000));
         }
       }
     }
