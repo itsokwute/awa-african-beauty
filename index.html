@@ -1,0 +1,1572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Awa African Beauty & Boutique | Braiding & Fashion in Rio Rancho, NM</title>
+  <!-- Meta Tags for SEO -->
+  <meta name="description" content="Discover professional African hair braiding, box braids, knotless braids, locs, and handcrafted African fashion & jewelry at Awa African Beauty & Boutique in Rio Rancho, NM.">
+  <meta name="keywords" content="African hair braiding, box braids, knotless braids, locs, African boutique, African clothing, jewelry, Rio Rancho, New Mexico, Hauwa, Awa">
+  <meta name="author" content="Awa African Beauty & Boutique">
+  
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandGold: '#D4AF37',
+            brandBlack: '#111111',
+            brandPurple: '#6A0DAD',
+            brandPurpleDark: '#4A0880',
+            brandGoldLight: '#E5C158',
+            brandLightBg: '#F9FAFB',
+            brandLightCard: '#FFFFFF'
+          },
+          fontFamily: {
+            sans: ['Montserrat', 'sans-serif'],
+            serif: ['Playfair Display', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-brandBlack text-gray-200">
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 hidden">
+    <div class="glass-panel text-brandGold px-6 py-3 rounded-full shadow-2xl border border-brandGold/30 flex items-center space-x-3">
+      <i class="fa-solid fa-circle-check text-xl"></i>
+      <span id="toast-message" class="font-medium text-sm text-gray-100">Item added to cart!</span>
+    </div>
+  </div>
+
+  <!-- NAVIGATION BAR -->
+  <nav class="glass-nav fixed top-0 w-full z-40 transition-all duration-300" id="navbar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <!-- Logo -->
+        <a href="#home" class="flex flex-col">
+          <span class="font-serif text-xl sm:text-2xl font-bold tracking-wide text-gold-gradient">
+            Awa African Beauty
+          </span>
+          <span class="text-[10px] tracking-[0.25em] text-gray-400 uppercase -mt-1 font-sans">
+            & Boutique
+          </span>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#home" class="text-sm font-medium tracking-wide hover:text-brandGold transition-colors">Home</a>
+          <a href="#about" class="text-sm font-medium tracking-wide hover:text-brandGold transition-colors">About Awa</a>
+          <a href="#services" class="text-sm font-medium tracking-wide hover:text-brandGold transition-colors">Braiding Services</a>
+          <a href="#boutique" class="text-sm font-medium tracking-wide hover:text-brandGold transition-colors">Boutique</a>
+          <a href="#social" class="text-sm font-medium tracking-wide hover:text-brandGold transition-colors">Social Feed</a>
+        </div>
+
+        <!-- Right Side CTA & Cart Toggle -->
+        <div class="hidden md:flex items-center space-x-6">
+          <!-- Cart Toggle -->
+          <button id="cart-btn" class="relative text-gray-300 hover:text-brandGold transition-colors p-2" aria-label="Open Shopping Cart">
+            <i class="fa-solid fa-bag-shopping text-xl"></i>
+            <span id="cart-badge" class="absolute -top-1 -right-1 bg-brandPurple text-white text-[10px] font-bold rounded-full w-5 h-5 flex items-center justify-center border border-brandGold/40 scale-0 transition-transform duration-300">
+              0
+            </span>
+          </button>
+          
+          <!-- Appointment CTA -->
+          <a href="#services" class="bg-gradient-to-r from-brandGold to-brandGoldLight hover:from-brandPurple hover:to-brandPurpleDark text-brandBlack hover:text-white font-semibold px-6 py-2.5 rounded-full hover:shadow-lg hover:shadow-brandPurple/20 transform hover:-translate-y-0.5 transition-all text-sm border border-brandGold hover:border-brandPurple">
+            Book Appointment
+          </a>
+        </div>
+
+        <!-- Mobile Buttons (Cart & Menu) -->
+        <div class="flex items-center space-x-4 md:hidden">
+          <!-- Mobile Cart Toggle -->
+          <button id="cart-btn-mobile" class="relative text-gray-300 hover:text-brandGold transition-colors p-2" aria-label="Open Shopping Cart">
+            <i class="fa-solid fa-bag-shopping text-xl"></i>
+            <span id="cart-badge-mobile" class="absolute -top-1 -right-1 bg-brandPurple text-white text-[10px] font-bold rounded-full w-5 h-5 flex items-center justify-center border border-brandGold/40 scale-0 transition-transform duration-300">
+              0
+            </span>
+          </button>
+
+          <!-- Mobile Hamburger -->
+          <button id="mobile-menu-btn" class="text-gray-300 hover:text-brandGold focus:outline-none p-2" aria-label="Toggle Menu">
+            <i class="fa-solid fa-bars text-2xl" id="menu-icon"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-brandBlack/95 border-b border-brandGold/10 px-4 pt-2 pb-6 space-y-4">
+      <a href="#home" class="block text-gray-300 hover:text-brandGold text-base font-medium py-2">Home</a>
+      <a href="#about" class="block text-gray-300 hover:text-brandGold text-base font-medium py-2">About Awa</a>
+      <a href="#services" class="block text-gray-300 hover:text-brandGold text-base font-medium py-2">Braiding Services</a>
+      <a href="#boutique" class="block text-gray-300 hover:text-brandGold text-base font-medium py-2">Boutique</a>
+      <a href="#social" class="block text-gray-300 hover:text-brandGold text-base font-medium py-2">Social Feed</a>
+      <div class="pt-4 border-t border-brandGold/10 flex flex-col space-y-4">
+        <a href="#services" class="w-full text-center bg-gradient-to-r from-brandGold to-brandGoldLight text-brandBlack font-semibold py-3 rounded-full hover:shadow-lg transition-all text-sm">
+          Book Appointment
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section id="home" class="relative min-h-screen flex items-center justify-center pt-24 pb-16 bg-mandela">
+    <!-- Purple Glow Orb Background -->
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-brandPurple/10 rounded-full filter blur-[120px] pointer-events-none"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-brandGold/5 rounded-full filter blur-[120px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Hero Text content -->
+        <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+          <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-brandPurple/20 border border-brandPurple/30">
+            <span class="w-2 h-2 rounded-full bg-brandGold animate-pulse"></span>
+            <span class="text-xs font-semibold tracking-wider text-brandGold uppercase">Rio Rancho's Royal Retreat</span>
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+            Exquisite African <br class="hidden sm:inline" />
+            <span class="text-gold-gradient">Hair Braiding</span> &amp; <br />
+            <span class="text-white border-b-4 border-brandPurple">Authentic Fashion</span>
+          </h1>
+
+          <p class="text-gray-300 text-base sm:text-lg max-w-xl mx-auto lg:mx-0 font-light leading-relaxed">
+            Professional home-based salon and boutique experience in Rio Rancho, New Mexico. Indulge in royal treatment, meticulous braid styling, and handpicked African garments.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+            <a href="#services" class="w-full sm:w-auto text-center bg-gradient-to-r from-brandGold to-brandGoldLight hover:from-brandPurple hover:to-brandPurpleDark text-brandBlack hover:text-white font-bold px-8 py-4 rounded-full shadow-lg shadow-brandGold/20 hover:shadow-brandPurple/40 transform hover:-translate-y-1 transition-all">
+              <i class="fa-regular fa-calendar-check mr-2"></i> Book Hair Appointment
+            </a>
+            <a href="#boutique" class="w-full sm:w-auto text-center border-2 border-brandGold text-brandGold hover:border-brandPurple hover:bg-brandPurple hover:text-white font-semibold px-8 py-3.5 rounded-full transform hover:-translate-y-1 transition-all">
+              <i class="fa-solid fa-shirt mr-2"></i> Shop Boutique
+            </a>
+          </div>
+
+          <!-- Proof Badges -->
+          <div class="grid grid-cols-3 gap-4 pt-8 max-w-md mx-auto lg:mx-0 border-t border-brandGold/10">
+            <div class="text-center lg:text-left">
+              <div class="text-2xl font-bold text-brandGold font-serif">100%</div>
+              <div class="text-[10px] text-gray-400 uppercase tracking-wider">Satisfied Clients</div>
+            </div>
+            <div class="text-center lg:text-left">
+              <div class="text-2xl font-bold text-brandGold font-serif">Home</div>
+              <div class="text-[10px] text-gray-400 uppercase tracking-wider">Private Salon</div>
+            </div>
+            <div class="text-center lg:text-left">
+              <div class="text-2xl font-bold text-brandGold font-serif">5.0 ★</div>
+              <div class="text-[10px] text-gray-400 uppercase tracking-wider">Top Rated Stylist</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Graphic Display -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="relative w-full max-w-[420px]">
+            <!-- Decorative Gold Frame Background -->
+            <div class="absolute -inset-1.5 bg-gradient-to-tr from-brandGold via-brandPurple to-brandGold rounded-3xl blur opacity-30 animate-pulse"></div>
+            <!-- Main Card Container -->
+            <div class="relative bg-brandBlack border-2 border-brandGold/30 rounded-3xl overflow-hidden p-3 shadow-2xl">
+              <div class="img-zoom-container rounded-2xl overflow-hidden aspect-[4/5]">
+                <img src="assets/hero_braids.png" alt="Awa Braiding Services Close-up" class="w-full h-full object-cover">
+              </div>
+              <div class="p-4 bg-brandBlack/90 text-center rounded-b-2xl border-t border-brandGold/10">
+                <p class="font-serif text-lg text-brandGold font-semibold">Stunning Braids with Gold Accents</p>
+                <p class="text-xs text-gray-400">Crafted with care, custom designed for royalty</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT THE OWNER SECTION -->
+  <section id="about" class="py-20 bg-brandLightBg text-brandBlack relative">
+    <div class="absolute top-0 right-0 w-64 h-64 bg-brandPurple/5 rounded-full filter blur-[80px] pointer-events-none"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Owner Portrait Grid -->
+        <div class="lg:col-span-5 flex justify-center order-2 lg:order-1">
+          <div class="relative w-full max-w-[360px]">
+            <div class="absolute -top-4 -left-4 w-24 h-24 border-t-4 border-l-4 border-brandPurple pointer-events-none"></div>
+            <div class="absolute -bottom-4 -right-4 w-24 h-24 border-b-4 border-r-4 border-brandGold pointer-events-none"></div>
+            <div class="bg-white p-3 rounded-2xl shadow-xl border border-gray-200">
+              <img src="assets/owner_profile.png" alt="Hauwa (Awa) Owner Profile" class="w-full rounded-xl object-cover aspect-[3/4]">
+              <div class="mt-4 text-center">
+                <span class="font-serif text-xl font-bold text-brandBlack">Hauwa (Awa)</span>
+                <p class="text-xs text-brandPurple font-semibold tracking-wider uppercase">Founder &amp; Lead Stylist</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Owner Bio Content -->
+        <div class="lg:col-span-7 space-y-6 order-1 lg:order-2">
+          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-brandPurple/10 border border-brandPurple/20">
+            <span class="text-xs font-semibold tracking-wider text-brandPurple uppercase">The Creative Mind</span>
+          </div>
+
+          <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight font-serif text-brandBlack">
+            Meet the Artist Behind <br/>
+            <span class="text-brandPurple font-bold">Your Hair &amp; Style Journey</span>
+          </h2>
+
+          <div class="w-20 h-1 bg-brandGold rounded-full"></div>
+
+          <p class="text-gray-700 leading-relaxed font-light">
+            Welcome to Awa African Beauty &amp; Boutique! I am <strong>Hauwa</strong>, known to my beloved clients as <strong>Awa</strong>. With years of dedicated experience mastering the art of traditional and modern African braiding, locs, and twisting styles, my mission is to make you look and feel like royalty.
+          </p>
+
+          <p class="text-gray-700 leading-relaxed font-light">
+            Beyond salon services, my boutique curation brings a piece of our beautiful heritage to Rio Rancho. Every dress, fabric, and hand-beaded statement necklace in my boutique is handpicked by me for its vibrant design, premium materials, and authentic craftsmanship.
+          </p>
+
+          <!-- Owner Highlights -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 text-sm">
+            <div class="flex items-start space-x-3">
+              <div class="text-brandGold mt-1"><i class="fa-solid fa-circle-check"></i></div>
+              <div>
+                <span class="font-semibold text-brandBlack">Expert Braid Craftsmanship</span>
+                <p class="text-xs text-gray-500">Meticulous parting, tension-free, and long-lasting</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-3">
+              <div class="text-brandGold mt-1"><i class="fa-solid fa-circle-check"></i></div>
+              <div>
+                <span class="font-semibold text-brandBlack">Authentic Sourcing</span>
+                <p class="text-xs text-gray-500">Unique African wax prints and premium handmade jewelry</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-3">
+              <div class="text-brandGold mt-1"><i class="fa-solid fa-circle-check"></i></div>
+              <div>
+                <span class="font-semibold text-brandBlack">Cozy Private Experience</span>
+                <p class="text-xs text-gray-500">Relaxing home-based environment with refreshments</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-3">
+              <div class="text-brandGold mt-1"><i class="fa-solid fa-circle-check"></i></div>
+              <div>
+                <span class="font-semibold text-brandBlack">Personalized Styling</span>
+                <p class="text-xs text-gray-500">Tailored consultations to match your personality &amp; hair type</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="pt-2">
+            <span class="font-serif italic text-2xl text-brandPurple font-semibold">Styled with love, worn with pride.</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- salon SERVICES SECTION -->
+  <section id="services" class="py-20 bg-brandBlack relative">
+    <div class="absolute bottom-10 left-10 w-80 h-80 bg-brandPurple/5 rounded-full filter blur-[100px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Section Header -->
+      <div class="text-center space-y-4 mb-16">
+        <span class="text-xs font-semibold tracking-wider text-brandGold uppercase px-3 py-1.5 rounded-full bg-brandGold/10 border border-brandGold/20">
+          Professional Salon Services
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
+          Our Signature Braid &amp; Hair Services
+        </h2>
+        <p class="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base font-light">
+          We style all hair textures with extreme precision and care. Explore our client favorites and reserve your appointment below.
+        </p>
+
+        <div class="max-w-xl mx-auto bg-brandPurple/20 border border-brandPurple/40 rounded-xl p-4 mt-6 text-xs sm:text-sm text-gray-300 flex items-start space-x-3 text-left">
+          <i class="fa-solid fa-house-chimney text-brandGold text-base flex-shrink-0 mt-0.5"></i>
+          <span><strong>Notice:</strong> Services are located in a private home-based studio in Rio Rancho, NM. Complete address is automatically sent upon booking confirmation.</span>
+        </div>
+      </div>
+
+      <!-- Services Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        
+        <!-- Card 1: Box Braids -->
+        <div class="glass-panel rounded-2xl p-5 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
+          <div class="space-y-4">
+            <!-- Image frame with floating badge -->
+            <div class="relative">
+              <div class="rounded-xl overflow-hidden border border-brandGold/30 bg-gray-950 aspect-[4/3] img-zoom-container">
+                <img src="assets/service_box_braids.png" alt="Classic Box Braids" class="w-full h-full object-cover">
+              </div>
+              <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-brandBlack border border-brandGold flex items-center justify-center text-brandGold z-10 shadow-md">
+                <i class="fa-solid fa-crown text-xs"></i>
+              </div>
+            </div>
+
+            <!-- Title & Details -->
+            <div class="space-y-2">
+              <h3 class="text-lg font-bold font-serif text-white tracking-wide">Classic Box Braids</h3>
+              
+              <!-- Transparency: Price & Duration lines -->
+              <div class="flex items-center justify-between text-[11px] text-brandGold border-y border-brandGold/10 py-1.5 my-2">
+                <span class="flex items-center"><i class="fa-solid fa-tag mr-1 text-[10px] text-brandPurple"></i> From $160</span>
+                <span class="flex items-center"><i class="fa-solid fa-clock mr-1 text-[10px] text-brandPurple"></i> 4-6 Hours</span>
+              </div>
+              
+              <p class="text-xs text-gray-400 font-light leading-relaxed">
+                Timeless, clean-sectioned braiding. Highly protective and versatile. Styled to your desired thickness and length.
+              </p>
+            </div>
+          </div>
+          
+          <div class="pt-5">
+            <a href="https://booksy.com" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-brandGold hover:bg-brandPurple hover:text-white border border-brandGold hover:border-brandPurple text-brandBlack hover:shadow-lg hover:shadow-brandPurple/50 font-bold text-sm tracking-wide transition-all shadow-md">
+              Book on Booksy
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 2: Knotless Braids -->
+        <div class="glass-panel rounded-2xl p-5 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
+          <div class="space-y-4">
+            <!-- Image frame with floating badge -->
+            <div class="relative">
+              <div class="rounded-xl overflow-hidden border border-brandGold/30 bg-gray-950 aspect-[4/3] img-zoom-container">
+                <img src="assets/service_knotless.png" alt="Knotless Braids" class="w-full h-full object-cover">
+              </div>
+              <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-brandBlack border border-brandGold flex items-center justify-center text-brandGold z-10 shadow-md">
+                <i class="fa-solid fa-gem text-xs"></i>
+              </div>
+            </div>
+
+            <!-- Title & Details -->
+            <div class="space-y-2">
+              <h3 class="text-lg font-bold font-serif text-white tracking-wide">Knotless Braids</h3>
+              
+              <!-- Transparency: Price & Duration lines -->
+              <div class="flex items-center justify-between text-[11px] text-brandGold border-y border-brandGold/10 py-1.5 my-2">
+                <span class="flex items-center"><i class="fa-solid fa-tag mr-1 text-[10px] text-brandPurple"></i> From $180</span>
+                <span class="flex items-center"><i class="fa-solid fa-clock mr-1 text-[10px] text-brandPurple"></i> 5-7 Hours</span>
+              </div>
+              
+              <p class="text-xs text-gray-400 font-light leading-relaxed">
+                Lighter, scalp-friendly braiding starting flat at the root. Delivers a highly natural look and dynamic flexibility.
+              </p>
+            </div>
+          </div>
+          
+          <div class="pt-5">
+            <a href="https://booksy.com" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-brandGold hover:bg-brandPurple hover:text-white border border-brandGold hover:border-brandPurple text-brandBlack hover:shadow-lg hover:shadow-brandPurple/50 font-bold text-sm tracking-wide transition-all shadow-md">
+              Book on Booksy
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 3: Locs Maintenance -->
+        <div class="glass-panel rounded-2xl p-5 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
+          <div class="space-y-4">
+            <!-- Image frame with floating badge -->
+            <div class="relative">
+              <div class="rounded-xl overflow-hidden border border-brandGold/30 bg-gray-950 aspect-[4/3] img-zoom-container">
+                <img src="assets/service_locs.png" alt="Locs Maintenance" class="w-full h-full object-cover">
+              </div>
+              <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-brandBlack border border-brandGold flex items-center justify-center text-brandGold z-10 shadow-md">
+                <i class="fa-solid fa-shield-halved text-xs"></i>
+              </div>
+            </div>
+
+            <!-- Title & Details -->
+            <div class="space-y-2">
+              <h3 class="text-lg font-bold font-serif text-white tracking-wide">Locs Maintenance</h3>
+              
+              <!-- Transparency: Price & Duration lines -->
+              <div class="flex items-center justify-between text-[11px] text-brandGold border-y border-brandGold/10 py-1.5 my-2">
+                <span class="flex items-center"><i class="fa-solid fa-tag mr-1 text-[10px] text-brandPurple"></i> From $110</span>
+                <span class="flex items-center"><i class="fa-solid fa-clock mr-1 text-[10px] text-brandPurple"></i> 2.5-4 Hours</span>
+              </div>
+              
+              <p class="text-xs text-gray-400 font-light leading-relaxed">
+                Meticulous loc retwist, root maintenance, and beautiful styling to keep your locs healthy, clean, and strong.
+              </p>
+            </div>
+          </div>
+          
+          <div class="pt-5">
+            <a href="https://booksy.com" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-brandGold hover:bg-brandPurple hover:text-white border border-brandGold hover:border-brandPurple text-brandBlack hover:shadow-lg hover:shadow-brandPurple/50 font-bold text-sm tracking-wide transition-all shadow-md">
+              Book on Booksy
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 4: Cornrows & Feed-ins -->
+        <div class="glass-panel rounded-2xl p-5 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
+          <div class="space-y-4">
+            <!-- Image frame with floating badge -->
+            <div class="relative">
+              <div class="rounded-xl overflow-hidden border border-brandGold/30 bg-gray-950 aspect-[4/3] img-zoom-container">
+                <img src="assets/service_cornrows.png" alt="Cornrows & Feed-ins" class="w-full h-full object-cover">
+              </div>
+              <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-brandBlack border border-brandGold flex items-center justify-center text-brandGold z-10 shadow-md">
+                <i class="fa-solid fa-leaf text-xs"></i>
+              </div>
+            </div>
+
+            <!-- Title & Details -->
+            <div class="space-y-2">
+              <h3 class="text-lg font-bold font-serif text-white tracking-wide">Cornrows &amp; Feed-ins</h3>
+              
+              <!-- Transparency: Price & Duration lines -->
+              <div class="flex items-center justify-between text-[11px] text-brandGold border-y border-brandGold/10 py-1.5 my-2">
+                <span class="flex items-center"><i class="fa-solid fa-tag mr-1 text-[10px] text-brandPurple"></i> From $85</span>
+                <span class="flex items-center"><i class="fa-solid fa-clock mr-1 text-[10px] text-brandPurple"></i> 1.5-3 Hours</span>
+              </div>
+              
+              <p class="text-xs text-gray-400 font-light leading-relaxed">
+                Sleek, beautiful scalp cornrows or dynamic feed-in styles. Perfect for elegant, quick, and low-maintenance updos.
+              </p>
+            </div>
+          </div>
+          
+          <div class="pt-5">
+            <a href="https://booksy.com" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-brandGold hover:bg-brandPurple hover:text-white border border-brandGold hover:border-brandPurple text-brandBlack hover:shadow-lg hover:shadow-brandPurple/50 font-bold text-sm tracking-wide transition-all shadow-md">
+              Book on Booksy
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- General Booking CTA Details -->
+      <div class="mt-16 text-center text-sm text-gray-400">
+        <p>Looking for custom styles, extensions, colors, or kids' braids? Feel free to contact Awa directly or write special details in your Booksy note.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- BOUTIQUE (SHOP) SECTION -->
+  <section id="boutique" class="py-20 bg-brandLightBg text-brandBlack relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      
+      <!-- Section Header -->
+      <div class="text-center space-y-4 mb-12">
+        <span class="text-xs font-semibold tracking-wider text-brandPurple uppercase px-3 py-1.5 rounded-full bg-brandPurple/10 border border-brandPurple/20">
+          The Royal Collection
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-brandBlack">
+          Shop Awa Boutique
+        </h2>
+        <p class="text-gray-600 max-w-2xl mx-auto text-sm sm:text-base font-light">
+          Hand-curated, high-quality African clothing and exquisite handcrafted accessories. Elevate your wardrobe with authentic heritage pieces.
+        </p>
+
+        <!-- Category Tabs -->
+        <div class="flex items-center justify-center space-x-4 pt-6">
+          <button onclick="filterProducts('all')" id="tab-all" class="px-6 py-2 rounded-full font-medium text-sm transition-all bg-brandPurple text-white shadow-md">
+            All Items
+          </button>
+          <button onclick="filterProducts('clothing')" id="tab-clothing" class="px-6 py-2 rounded-full font-medium text-sm transition-all bg-white text-gray-700 hover:bg-gray-100 border border-gray-300">
+            Exclusive Clothing
+          </button>
+          <button onclick="filterProducts('jewelry')" id="tab-jewelry" class="px-6 py-2 rounded-full font-medium text-sm transition-all bg-white text-gray-700 hover:bg-gray-100 border border-gray-300">
+            Handcrafted Jewelry
+          </button>
+        </div>
+      </div>
+
+      <!-- Products Grid -->
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-8" id="products-grid">
+        <!-- Products will be dynamically populated here via JS to allow cart interactivity -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SHOPPING CART SLIDE-OUT DRAWER -->
+  <div id="cart-drawer-overlay" class="fixed inset-0 bg-brandBlack/60 backdrop-blur-sm z-50 hidden opacity-0 transition-opacity duration-300"></div>
+  <div id="cart-drawer" class="fixed top-0 right-0 h-full w-full sm:w-[480px] bg-brandBlack border-l border-brandGold/20 z-50 shadow-2xl cart-drawer-closed transition-transform duration-300 flex flex-col justify-between">
+    
+    <!-- Drawer Header -->
+    <div class="p-6 border-b border-brandGold/15 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <i class="fa-solid fa-bag-shopping text-brandGold text-xl"></i>
+        <h3 class="font-serif text-xl font-bold text-white">Your Royal Bag</h3>
+        <span id="cart-drawer-count" class="bg-brandPurple text-white text-xs font-semibold px-2.5 py-0.5 rounded-full">
+          0 Items
+        </span>
+      </div>
+      <button id="cart-close-btn" class="text-gray-400 hover:text-brandGold transition-colors p-2 text-xl" aria-label="Close Shopping Cart">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <!-- Drawer Body (Items list) -->
+    <div class="flex-grow overflow-y-auto p-6 space-y-6" id="cart-drawer-items">
+      <!-- Dynamic cart items list -->
+    </div>
+
+    <!-- Drawer Footer (Subtotal / checkout) -->
+    <div class="p-6 border-t border-brandGold/15 bg-brandBlack/80 backdrop-blur-md space-y-4">
+      <div class="space-y-2 text-sm text-gray-300">
+        <div class="flex justify-between">
+          <span>Bag Subtotal</span>
+          <span id="cart-subtotal" class="font-semibold text-white">$0.00</span>
+        </div>
+        <div class="flex justify-between text-xs text-gray-400">
+          <span>Estimated Sales Tax (7.5%)</span>
+          <span id="cart-tax">$0.00</span>
+        </div>
+        <div class="flex justify-between border-t border-brandGold/10 pt-2 text-base font-bold text-white">
+          <span>Total Estimate</span>
+          <span id="cart-total" class="text-brandGold">$0.00</span>
+        </div>
+      </div>
+
+      <!-- Accepted Payment Options -->
+      <div class="bg-gray-950/60 border border-brandGold/10 rounded-xl p-3 space-y-2">
+        <span class="text-[10px] uppercase font-bold text-gray-400 tracking-wider flex items-center">
+          <i class="fa-solid fa-credit-card text-brandGold mr-1 text-[11px]"></i> Payment Methods Accepted:
+        </span>
+        <div class="flex flex-wrap gap-2 text-[10px] text-gray-300">
+          <span class="bg-brandBlack border border-brandGold/10 px-2 py-1 rounded flex items-center space-x-1">
+            <i class="fa-solid fa-money-bill-wave text-green-500"></i>
+            <span>Cash</span>
+          </span>
+          <span class="bg-brandBlack border border-brandGold/10 px-2 py-1 rounded flex items-center space-x-1">
+            <i class="fa-solid fa-mobile-screen text-blue-400"></i>
+            <span>Zelle</span>
+          </span>
+          <span class="bg-brandBlack border border-brandGold/10 px-2 py-1 rounded flex items-center space-x-1">
+            <i class="fa-solid fa-wallet text-green-400"></i>
+            <span>Cash App</span>
+          </span>
+          <span class="bg-brandBlack border border-brandGold/10 px-2 py-1 rounded flex items-center space-x-1">
+            <i class="fa-solid fa-coins text-brandPurple"></i>
+            <span>Venmo</span>
+          </span>
+        </div>
+      </div>
+
+      <button onclick="openCheckoutModal()" class="w-full bg-gradient-to-r from-brandGold to-brandGoldLight text-brandBlack font-extrabold py-4 rounded-xl shadow-lg hover:shadow-brandGold/20 transform hover:-translate-y-0.5 transition-all text-center tracking-wide text-sm">
+        Proceed to Checkout
+      </button>
+      <p class="text-[10px] text-gray-500 text-center">Checkout confirms items and lets you send order via WhatsApp directly to Awa.</p>
+    </div>
+
+  </div>
+
+  <!-- CHECKOUT MODAL -->
+  <div id="checkout-modal-overlay" class="fixed inset-0 bg-brandBlack/80 backdrop-blur-md z-50 hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-2 sm:p-4">
+    <div class="bg-brandBlack border border-brandGold/30 rounded-2xl max-w-lg w-full max-h-[92vh] overflow-y-auto shadow-2xl relative">
+      
+      <!-- Close modal -->
+      <button onclick="closeCheckoutModal()" class="absolute top-4 right-4 text-gray-400 hover:text-brandGold transition-colors text-xl p-2 z-10" aria-label="Close Modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <!-- Modal Content -->
+      <div class="p-6 sm:p-8 space-y-6">
+        <!-- Secure Overlay (Spinner / Success) inside the modal content -->
+        <div id="checkout-overlay" class="absolute inset-0 bg-brandBlack/95 z-20 hidden flex flex-col items-center justify-center p-6 text-center space-y-4 rounded-2xl">
+          <!-- Spinner -->
+          <div id="checkout-spinner" class="relative w-16 h-16">
+            <div class="absolute inset-0 rounded-full border-4 border-brandGold/20"></div>
+            <div class="absolute inset-0 rounded-full border-4 border-t-brandGold animate-spin"></div>
+          </div>
+          <!-- Success Checkmark -->
+          <div id="checkout-success-icon" class="hidden w-16 h-16 rounded-full bg-brandGold/10 border-2 border-brandGold flex items-center justify-center text-brandGold text-3xl">
+            <i class="fa-solid fa-check"></i>
+          </div>
+          <!-- Status Text -->
+          <div class="space-y-1">
+            <h4 id="checkout-status-title" class="font-serif text-lg font-bold text-white">Processing payment...</h4>
+            <p id="checkout-status-desc" class="text-xs text-gray-400">Connecting to Stripe secure servers...</p>
+          </div>
+          <!-- Close overlay button (shown on success) -->
+          <button id="checkout-overlay-close-btn" type="button" onclick="closeCheckoutModal()" class="hidden border border-brandGold text-brandGold font-semibold text-xs px-6 py-2.5 rounded-full hover:bg-brandGold hover:text-brandBlack transition-all">
+            Back to Site
+          </button>
+        </div>
+
+        <div class="text-center space-y-2">
+          <span class="text-xs font-semibold tracking-wider text-brandGold uppercase">Confirm Your Purchase</span>
+          <h3 class="font-serif text-2xl font-bold text-white">Checkout Details</h3>
+          <div class="w-16 h-0.5 bg-brandGold mx-auto"></div>
+        </div>
+
+        <form id="checkout-form" class="space-y-4" onsubmit="submitCheckout(event)">
+          <!-- Name -->
+          <div>
+            <label for="checkout-name" class="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Full Name *</label>
+            <input type="text" id="checkout-name" required class="w-full bg-gray-900 border border-brandGold/20 focus:border-brandGold focus:ring-1 focus:ring-brandGold rounded-lg px-4 py-2.5 text-white text-sm outline-none transition-colors" placeholder="Queen Carter">
+          </div>
+
+          <!-- Phone -->
+          <div>
+            <label for="checkout-phone" class="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Phone Number *</label>
+            <input type="tel" id="checkout-phone" required class="w-full bg-gray-900 border border-brandGold/20 focus:border-brandGold focus:ring-1 focus:ring-brandGold rounded-lg px-4 py-2.5 text-white text-sm outline-none transition-colors" placeholder="(505) 555-0199">
+          </div>
+
+          <!-- Delivery Option -->
+          <div>
+            <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Delivery Option</label>
+            <div class="grid grid-cols-2 gap-4">
+              <label class="flex items-center space-x-3 bg-gray-900 border border-brandGold/20 rounded-lg p-3 cursor-pointer hover:border-brandGold transition-colors">
+                <input type="radio" name="delivery" value="pickup" checked onchange="toggleAddressField(false)" class="text-brandGold focus:ring-brandGold bg-gray-900 border-gray-700">
+                <span class="text-sm font-medium text-white">Local Pickup</span>
+              </label>
+              <label class="flex items-center space-x-3 bg-gray-900 border border-brandGold/20 rounded-lg p-3 cursor-pointer hover:border-brandGold transition-colors">
+                <input type="radio" name="delivery" value="shipping" onchange="toggleAddressField(true)" class="text-brandGold focus:ring-brandGold bg-gray-900 border-gray-700">
+                <span class="text-sm font-medium text-white">US Shipping</span>
+              </label>
+            </div>
+            <p id="pickup-note" class="text-[11px] text-gray-400 mt-2"><i class="fa-solid fa-info-circle mr-1"></i> Pickup from home salon in Rio Rancho, NM. Free of charge.</p>
+          </div>
+
+          <!-- Shipping Address (collapsible) -->
+          <div id="address-field-container" class="hidden space-y-3">
+            <label for="checkout-address" class="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Shipping Address *</label>
+            <textarea id="checkout-address" rows="2" class="w-full bg-gray-900 border border-brandGold/20 focus:border-brandGold focus:ring-1 focus:ring-brandGold rounded-lg px-4 py-2 text-white text-sm outline-none transition-colors" placeholder="123 Main St, Albuquerque, NM 87102"></textarea>
+          </div>
+
+          <!-- Payment Method Selection -->
+          <div class="space-y-2">
+            <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wider">Payment Method *</label>
+            <div class="grid grid-cols-3 gap-2">
+              <!-- Stripe Card (Primary) -->
+              <button type="button" onclick="setPaymentMethod('stripe')" id="pay-method-stripe" class="flex flex-col items-center justify-center bg-gray-900 border-2 border-brandGold rounded-lg p-2.5 cursor-pointer text-white transition-all text-center">
+                <i class="fa-solid fa-credit-card text-brandGold text-base mb-1"></i>
+                <span class="text-[9px] font-bold">Stripe Card</span>
+              </button>
+              <!-- Alternative -->
+              <button type="button" onclick="setPaymentMethod('alternative')" id="pay-method-alternative" class="flex flex-col items-center justify-center bg-gray-900 border border-brandGold/20 rounded-lg p-2.5 cursor-pointer text-gray-400 hover:text-white transition-all text-center">
+                <i class="fa-solid fa-wallet text-base mb-1"></i>
+                <span class="text-[9px] font-bold">Alternative Pay</span>
+              </button>
+              <!-- WhatsApp -->
+              <button type="button" onclick="setPaymentMethod('whatsapp')" id="pay-method-whatsapp" class="flex flex-col items-center justify-center bg-gray-900 border border-brandGold/20 rounded-lg p-2.5 cursor-pointer text-gray-400 hover:text-white transition-all text-center">
+                <i class="fa-brands fa-whatsapp text-base mb-1"></i>
+                <span class="text-[9px] font-bold">WhatsApp Order</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- DYNAMIC PAYMENT SECTIONS -->
+          
+          <!-- Section 1: Stripe Card Input -->
+          <div id="payment-section-stripe" class="space-y-2">
+            <div class="bg-gray-900 border border-brandGold/20 rounded-xl p-3.5 space-y-3">
+              <div>
+                <label for="stripe-card-name" class="block text-[9px] font-semibold text-gray-400 uppercase tracking-wider mb-0.5">Cardholder Name</label>
+                <input type="text" id="stripe-card-name" class="stripe-input w-full bg-brandBlack border border-gray-700 focus:border-brandGold focus:ring-1 focus:ring-brandGold rounded-lg px-3 py-1.5 text-white text-xs outline-none transition-colors" placeholder="Queen Carter">
+              </div>
+              <div>
+                <label for="stripe-card-number" class="block text-[9px] font-semibold text-gray-400 uppercase tracking-wider mb-0.5">Card Number</label>
+                <div class="relative">
+                  <input type="text" id="stripe-card-number" maxlength="19" class="stripe-input w-full bg-brandBlack border border-gray-700 focus:border-brandGold focus:ring-1 focus:ring-brandGold rounded-lg px-3 py-1.5 pl-9 text-white text-xs outline-none transition-colors" placeholder="4111 2222 3333 4444">
+                  <i class="fa-solid fa-credit-card absolute left-3 top-2 text-gray-500 text-sm"></i>
+                </div>
+              </div>
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label for="stripe-card-expiry" class="block text-[9px] font-semibold text-gray-400 uppercase tracking-wider mb-0.5">Expiration</label>
+                  <input type="text" id="stripe-card-expiry" maxlength="5" class="stripe-input w-full bg-brandBlack border border-gray-700 focus:border-brandGold focus:ring-1 focus:ring-brandGold rounded-lg px-3 py-1.5 text-white text-xs outline-none transition-colors" placeholder="MM/YY">
+                </div>
+                <div>
+                  <label for="stripe-card-cvc" class="block text-[9px] font-semibold text-gray-400 uppercase tracking-wider mb-0.5">CVC</label>
+                  <input type="text" id="stripe-card-cvc" maxlength="4" class="stripe-input w-full bg-brandBlack border border-gray-700 focus:border-brandGold focus:ring-1 focus:ring-brandGold rounded-lg px-3 py-1.5 text-white text-xs outline-none transition-colors" placeholder="123">
+                </div>
+              </div>
+            </div>
+            <div class="text-[9px] text-gray-400 flex items-center justify-center space-x-1">
+              <i class="fa-solid fa-lock text-brandGold"></i>
+              <span>Secure card processing powered by <strong>Stripe</strong></span>
+            </div>
+          </div>
+
+          <!-- Section 2: Alternative Payment Details -->
+          <div id="payment-section-alternative" class="hidden space-y-2">
+            <div class="bg-gray-900 border border-brandGold/20 rounded-xl p-3.5 space-y-2 text-xs">
+              <p class="text-[9px] uppercase font-bold text-brandGold tracking-wider">Instructions for alternative payment:</p>
+              <div class="space-y-1.5 text-gray-300 text-[11px]">
+                <div class="flex justify-between border-b border-gray-800 pb-1">
+                  <span><i class="fa-solid fa-mobile-screen mr-1 text-blue-400"></i> Zelle:</span>
+                  <span class="font-mono text-white">pay@awaafricanbeauty.com</span>
+                </div>
+                <div class="flex justify-between border-b border-gray-800 pb-1">
+                  <span><i class="fa-solid fa-wallet mr-1 text-green-400"></i> Cash App:</span>
+                  <span class="font-mono text-white">$AwaBeautyBoutique</span>
+                </div>
+                <div class="flex justify-between border-b border-gray-800 pb-1">
+                  <span><i class="fa-solid fa-coins mr-1 text-brandPurple"></i> Venmo:</span>
+                  <span class="font-mono text-white">@AwaBeautyBoutique</span>
+                </div>
+                <div class="flex justify-between pb-1">
+                  <span><i class="fa-solid fa-money-bill-wave mr-1 text-green-500"></i> Cash:</span>
+                  <span class="text-white">Pay cash upon pickup/delivery</span>
+                </div>
+              </div>
+              <p class="text-[9px] text-gray-400">Transfer payment after submitting order. We will verify and process your booking reservations immediately.</p>
+            </div>
+          </div>
+
+          <!-- Section 3: WhatsApp Submission Note -->
+          <div id="payment-section-whatsapp" class="hidden space-y-2">
+            <div class="bg-gray-900 border border-brandGold/20 rounded-xl p-3.5 text-xs text-gray-300">
+              <p class="text-[9px] uppercase font-bold text-brandGold tracking-wider mb-1">WhatsApp Checkout:</p>
+              <p class="text-[11px] leading-relaxed">We will compile your order and customer info, clean the cart, and direct you to WhatsApp to message Awa directly to coordinate details.</p>
+            </div>
+          </div>
+
+          <!-- Order Summary in modal -->
+          <div class="bg-gray-950 p-3.5 rounded-xl border border-brandGold/10 space-y-2">
+            <span class="text-[9px] font-semibold text-gray-400 uppercase tracking-wider">Items Summary</span>
+            <div id="modal-items-list" class="max-h-24 overflow-y-auto space-y-1 divide-y divide-gray-900 text-xs">
+              <!-- Item list injected -->
+            </div>
+            <div class="flex justify-between border-t border-brandGold/10 pt-2 text-xs font-bold text-white">
+              <span>Total with Tax:</span>
+              <span id="modal-total" class="text-brandGold">$0.00</span>
+            </div>
+          </div>
+
+          <!-- Action Button -->
+          <button type="submit" id="checkout-submit-btn" class="w-full bg-gradient-to-r from-brandGold to-brandGoldLight hover:from-brandPurple hover:to-brandPurpleDark text-brandBlack hover:text-white font-extrabold py-3.5 rounded-xl shadow-lg hover:shadow-brandPurple/40 transition-all text-sm tracking-wide flex items-center justify-center space-x-2">
+            <i class="fa-solid fa-lock text-sm"></i>
+            <span id="submit-btn-text">Pay $0.00 via Stripe</span>
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SOCIAL FEED PREVIEW SECTION -->
+  <section id="social" class="py-20 bg-brandBlack relative">
+    <div class="absolute top-1/4 right-0 w-80 h-80 bg-brandPurple/5 rounded-full filter blur-[100px] pointer-events-none"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <!-- Section Header -->
+      <div class="text-center space-y-4 mb-16">
+        <span class="text-xs font-semibold tracking-wider text-brandGold uppercase px-3 py-1.5 rounded-full bg-brandGold/10 border border-brandGold/20">
+          Style &amp; Fashion Journey
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
+          Follow Awa on TikTok &amp; Facebook
+        </h2>
+        <p class="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base font-light">
+          Get daily hair inspiration, styling videos, new boutique arrivals, and customer features. Join our beautiful styling family!
+        </p>
+        <div class="flex items-center justify-center space-x-6 pt-4 text-sm">
+          <a href="https://www.tiktok.com/@styledbyawa" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-brandGold transition-colors flex items-center space-x-2">
+            <i class="fa-brands fa-tiktok text-brandGold text-lg"></i>
+            <span class="font-semibold">@styledbyawa</span>
+          </a>
+          <a href="https://www.facebook.com/slayedbyhauwa" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-brandGold transition-colors flex items-center space-x-2">
+            <i class="fa-brands fa-square-facebook text-brandGold text-lg"></i>
+            <span class="font-semibold">@slayedbyhauwa</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Mock Feed Grid -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        
+        <!-- Feed Card 1 -->
+        <div class="relative group aspect-square rounded-2xl overflow-hidden border border-brandGold/15 shadow-md">
+          <img src="assets/hero_braids.png" alt="Braid Client Video Frame" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-between p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div class="text-white text-right"><i class="fa-brands fa-tiktok text-xl"></i></div>
+            <div class="space-y-1">
+              <p class="text-xs text-brandGold font-semibold">@styledbyawa</p>
+              <p class="text-[10px] text-gray-200 line-clamp-2">Slaying this knotless braid setup with golden braids! 😍👑 #braids #riorancho</p>
+            </div>
+          </div>
+          <!-- Play Overlay Icon -->
+          <div class="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-transparent transition-colors">
+            <div class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+              <i class="fa-solid fa-play ml-1"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feed Card 2 -->
+        <div class="relative group aspect-square rounded-2xl overflow-hidden border border-brandGold/15 shadow-md">
+          <img src="assets/clothing_product_1.png" alt="Boutique Dress Display Frame" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-between p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div class="text-white text-right"><i class="fa-brands fa-square-facebook text-xl"></i></div>
+            <div class="space-y-1">
+              <p class="text-xs text-brandGold font-semibold">@slayedbyhauwa</p>
+              <p class="text-[10px] text-gray-200 line-clamp-2">The Royal Kente Maxi dress has officially arrived at the boutique! Limited stock. 👗✨</p>
+            </div>
+          </div>
+          <div class="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-transparent transition-colors">
+            <div class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+              <i class="fa-solid fa-eye"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feed Card 3 -->
+        <div class="relative group aspect-square rounded-2xl overflow-hidden border border-brandGold/15 shadow-md">
+          <img src="assets/owner_profile.png" alt="Owner Styling Video Frame" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-between p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div class="text-white text-right"><i class="fa-brands fa-tiktok text-xl"></i></div>
+            <div class="space-y-1">
+              <p class="text-xs text-brandGold font-semibold">@styledbyawa</p>
+              <p class="text-[10px] text-gray-200 line-clamp-2">A day in the life styling hair in Rio Rancho! Grateful for my customers. 💜✨</p>
+            </div>
+          </div>
+          <div class="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-transparent transition-colors">
+            <div class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+              <i class="fa-solid fa-play ml-1"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feed Card 4 -->
+        <div class="relative group aspect-square rounded-2xl overflow-hidden border border-brandGold/15 shadow-md">
+          <img src="assets/jewelry_product_1.png" alt="Boutique Jewelry Detail Frame" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-between p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div class="text-white text-right"><i class="fa-brands fa-square-facebook text-xl"></i></div>
+            <div class="space-y-1">
+              <p class="text-xs text-brandGold font-semibold">@slayedbyhauwa</p>
+              <p class="text-[10px] text-gray-200 line-clamp-2">Handmade beauty: Queen Nefertiti chokers are back in stock! Perfect matching. 💍👑</p>
+            </div>
+          </div>
+          <div class="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-transparent transition-colors">
+            <div class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+              <i class="fa-solid fa-eye"></i>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-10">
+        <a href="https://www.tiktok.com/@styledbyawa" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto text-center inline-flex items-center justify-center space-x-2 border border-brandGold/40 hover:border-brandPurple hover:bg-brandPurple hover:text-white text-brandGold font-medium px-6 py-3 rounded-full transition-all text-sm hover:shadow-lg hover:shadow-brandPurple/30">
+          <i class="fa-brands fa-tiktok"></i>
+          <span>Follow Style Journey on TikTok</span>
+        </a>
+        <a href="https://www.facebook.com/slayedbyhauwa" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto text-center inline-flex items-center justify-center space-x-2 border border-brandGold/40 hover:border-brandPurple hover:bg-brandPurple hover:text-white text-brandGold font-medium px-6 py-3 rounded-full transition-all text-sm hover:shadow-lg hover:shadow-brandPurple/30">
+          <i class="fa-brands fa-facebook-f"></i>
+          <span>Follow Style Journey on Facebook</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-brandBlack border-t border-brandGold/10 text-gray-400 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        
+        <!-- Logo & Brand statement -->
+        <div class="space-y-4">
+          <a href="#home" class="flex flex-col">
+            <span class="font-serif text-2xl font-bold tracking-wide text-gold-gradient">
+              Awa African Beauty
+            </span>
+            <span class="text-[10px] tracking-[0.25em] text-gray-400 uppercase -mt-1 font-sans">
+              & Boutique
+            </span>
+          </a>
+          <p class="text-xs font-light leading-relaxed">
+            Elegant African hair braiding and curated statement boutique clothing. Bringing royalty and authentic cultural styling to Rio Rancho, New Mexico.
+          </p>
+          <div class="flex space-x-4 pt-2">
+            <a href="https://www.tiktok.com/@styledbyawa" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-brandGold transition-colors text-lg" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://www.facebook.com/slayedbyhauwa" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-brandGold transition-colors text-lg" aria-label="Facebook"><i class="fa-brands fa-square-facebook"></i></a>
+            <a href="https://booksy.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-brandGold transition-colors text-lg" aria-label="Booksy"><i class="fa-solid fa-calendar-days"></i></a>
+          </div>
+        </div>
+
+        <!-- Links -->
+        <div>
+          <h4 class="font-serif text-sm font-bold text-white uppercase tracking-wider mb-4 border-b border-brandGold/20 pb-2 inline-block">Quick Links</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="#home" class="hover:text-brandGold transition-colors">Home</a></li>
+            <li><a href="#about" class="hover:text-brandGold transition-colors">About Hauwa</a></li>
+            <li><a href="#services" class="hover:text-brandGold transition-colors">Braiding Services</a></li>
+            <li><a href="#boutique" class="hover:text-brandGold transition-colors">Boutique Store</a></li>
+            <li><a href="#social" class="hover:text-brandGold transition-colors">Social Feed</a></li>
+          </ul>
+        </div>
+
+        <!-- Salon Info -->
+        <div>
+          <h4 class="font-serif text-sm font-bold text-white uppercase tracking-wider mb-4 border-b border-brandGold/20 pb-2 inline-block">Salon Details</h4>
+          <ul class="space-y-3 text-xs font-light">
+            <li class="flex items-start space-x-2">
+              <i class="fa-solid fa-location-dot text-brandGold mt-0.5"></i>
+              <span>Home-based salon in <br/>Rio Rancho, New Mexico (87144)</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <i class="fa-solid fa-phone text-brandGold"></i>
+              <span>By Appointment Only</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <i class="fa-solid fa-clock text-brandGold"></i>
+              <span>Mon - Sat: 8:00 AM - 7:00 PM</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Map/Location note -->
+        <div>
+          <h4 class="font-serif text-sm font-bold text-white uppercase tracking-wider mb-4 border-b border-brandGold/20 pb-2 inline-block">Location Area</h4>
+          <div class="rounded-xl overflow-hidden border border-brandGold/15 relative h-32 bg-gray-950 flex items-center justify-center p-3 text-center">
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(212,175,55,0.08)_0%,transparent_80%)]"></div>
+            <div class="space-y-1 z-10">
+              <i class="fa-solid fa-map-location-dot text-brandGold text-2xl"></i>
+              <p class="text-[10px] text-gray-300 font-semibold uppercase">Rio Rancho, NM</p>
+              <p class="text-[9px] text-gray-500 leading-normal">Located near High Resort Blvd / NM-528. Secure private parking.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Copyright Bar -->
+      <div class="border-t border-brandGold/10 mt-12 pt-8 text-center text-[10px] flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+        <p>&copy; 2026 Awa African Beauty &amp; Boutique. All rights reserved.</p>
+        <p class="flex space-x-4">
+          <a href="#" class="hover:text-brandGold">Privacy Policy</a>
+          <span class="text-brandGold/30">|</span>
+          <a href="#" class="hover:text-brandGold">Terms of Service</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING WHATSAPP BUTTON -->
+  <div class="fixed bottom-6 right-6 z-40 flex items-center">
+    <!-- Chat Bubble Label -->
+    <a href="https://wa.me/YOUR_NUMBER" target="_blank" rel="noopener noreferrer" class="bg-brandBlack border border-brandGold/30 text-white font-medium text-xs py-2 px-4 rounded-full shadow-2xl hover:border-brandGold transition-all flex items-center space-x-1.5 mr-3 group">
+      <span class="w-2 h-2 rounded-full bg-[#25D366] animate-pulse"></span>
+      <span class="font-semibold text-gray-200">Chat to Book</span>
+    </a>
+    <!-- Main WhatsApp Round Button -->
+    <a href="https://wa.me/YOUR_NUMBER" target="_blank" rel="noopener noreferrer" class="w-16 h-16 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white flex flex-col items-center justify-center shadow-2xl border border-white/10 hover:scale-105 transition-transform" aria-label="Chat with Awa on WhatsApp">
+      <!-- Pulse Effect -->
+      <span class="absolute -inset-1 rounded-full bg-[#25D366]/20 animate-ping pointer-events-none"></span>
+      <i class="fa-brands fa-whatsapp text-2xl relative z-10"></i>
+      <span class="text-[9px] font-bold uppercase tracking-wider relative z-10 -mt-0.5">contact</span>
+    </a>
+  </div>
+
+  <!-- JAVASCRIPT BUSINESS LOGIC -->
+  <script>
+    // --- PRODUCT DATA ---
+    const PRODUCTS = [
+      {
+        id: 'clothing-1',
+        name: 'Royal Kente Maxi Dress',
+        category: 'clothing',
+        price: 125.00,
+        image: 'assets/clothing_product_1.png',
+        desc: 'Premium handwoven Kente-style maxi dress featuring vibrant purple and gold patterns. Perfect for special cultural events.'
+      },
+      {
+        id: 'clothing-2',
+        name: 'Ankara Wax Kimono Jacket',
+        category: 'clothing',
+        price: 95.00,
+        image: 'assets/clothing_product_2.png',
+        desc: 'Stunning kimono jacket tailored in bright Ankara prints. Features deep regal purple gradients and detailed gold engravings.'
+      },
+      {
+        id: 'jewelry-1',
+        name: 'Nefertiti Beaded Choker Set',
+        category: 'jewelry',
+        price: 45.00,
+        image: 'assets/jewelry_product_1.png',
+        desc: 'Beautiful handcrafted choker neckwear woven with royal gold beads and purple stones. Includes matching drop earrings.'
+      },
+      {
+        id: 'jewelry-2',
+        name: 'Engraved Golden Brass Bangles',
+        category: 'jewelry',
+        price: 35.00,
+        image: 'assets/jewelry_product_2.png',
+        desc: 'Three stacked custom brass bangles featuring authentic hand-carved tribal inscriptions and a high-polish finish.'
+      }
+    ];
+
+    // --- CART STATE ---
+    let cart = [];
+
+    // Load cart from localStorage on page load
+    function loadCart() {
+      const storedCart = localStorage.getItem('awa_boutique_cart');
+      if (storedCart) {
+        try {
+          cart = JSON.parse(storedCart);
+        } catch (e) {
+          cart = [];
+        }
+      }
+      updateCartUI();
+    }
+
+    // Save cart to localStorage
+    function saveCart() {
+      localStorage.setItem('awa_boutique_cart', JSON.stringify(cart));
+    }
+
+    // --- DOM SELECTORS ---
+    const productsGrid = document.getElementById('products-grid');
+    const cartBtn = document.getElementById('cart-btn');
+    const cartBtnMobile = document.getElementById('cart-btn-mobile');
+    const cartCloseBtn = document.getElementById('cart-close-btn');
+    const cartDrawer = document.getElementById('cart-drawer');
+    const cartDrawerOverlay = document.getElementById('cart-drawer-overlay');
+    const cartBadge = document.getElementById('cart-badge');
+    const cartBadgeMobile = document.getElementById('cart-badge-mobile');
+    const cartDrawerCount = document.getElementById('cart-drawer-count');
+    const cartDrawerItems = document.getElementById('cart-drawer-items');
+    const cartSubtotal = document.getElementById('cart-subtotal');
+    const cartTax = document.getElementById('cart-tax');
+    const cartTotal = document.getElementById('cart-total');
+
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    const navbar = document.getElementById('navbar');
+
+    const checkoutModalOverlay = document.getElementById('checkout-modal-overlay');
+    const checkoutForm = document.getElementById('checkout-form');
+    const addressFieldContainer = document.getElementById('address-field-container');
+    const modalItemsList = document.getElementById('modal-items-list');
+    const modalTotal = document.getElementById('modal-total');
+
+    const toast = document.getElementById('toast');
+    const toastMessage = document.getElementById('toast-message');
+
+    // --- INITIALIZATION ---
+    window.addEventListener('DOMContentLoaded', () => {
+      renderProducts(PRODUCTS);
+      loadCart();
+      
+      // Event listeners
+      cartBtn.addEventListener('click', toggleCartDrawer);
+      cartBtnMobile.addEventListener('click', toggleCartDrawer);
+      cartCloseBtn.addEventListener('click', toggleCartDrawer);
+      cartDrawerOverlay.addEventListener('click', toggleCartDrawer);
+      
+      mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+      
+      // Scroll listener for sticky navbar design changes
+      window.addEventListener('scroll', handleNavbarScroll);
+    });
+
+    // --- NAV LOGIC ---
+    function handleNavbarScroll() {
+      if (window.scrollY > 50) {
+        navbar.classList.add('py-1', 'bg-brandBlack/95', 'shadow-lg');
+        navbar.classList.remove('py-0');
+      } else {
+        navbar.classList.remove('py-1', 'bg-brandBlack/95', 'shadow-lg');
+      }
+    }
+
+    function toggleMobileMenu() {
+      mobileMenu.classList.toggle('hidden');
+      if (mobileMenu.classList.contains('hidden')) {
+        menuIcon.className = 'fa-solid fa-bars text-2xl';
+      } else {
+        menuIcon.className = 'fa-solid fa-xmark text-2xl';
+      }
+    }
+
+    // --- RENDER PRODUCTS ---
+    function renderProducts(items) {
+      productsGrid.innerHTML = '';
+      if (items.length === 0) {
+        productsGrid.innerHTML = `<div class="col-span-full text-center text-gray-500 py-12">No products found.</div>`;
+        return;
+      }
+      
+      items.forEach(product => {
+        const cardHtml = `
+          <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 flex flex-col justify-between group transform hover:-translate-y-1 transition-all duration-300">
+            <!-- Product Image -->
+            <div class="relative overflow-hidden aspect-[4/5] img-zoom-container bg-gray-50">
+              <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover">
+              <span class="absolute top-2.5 left-2.5 text-[8px] sm:top-4 sm:left-4 sm:text-[10px] bg-brandPurple text-white uppercase font-bold tracking-wider px-2 py-0.5 sm:px-3 sm:py-1 rounded-full shadow-md">
+                ${product.category === 'clothing' ? 'Clothing' : 'Jewelry'}
+              </span>
+            </div>
+            
+            <!-- Details -->
+            <div class="p-3.5 sm:p-5 flex-grow flex flex-col justify-between">
+              <div class="space-y-1.5">
+                <div class="flex items-center space-x-0.5 sm:space-x-1 text-[9px] sm:text-xs text-brandGold">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <span class="text-[8px] sm:text-[10px] text-gray-400 ml-0.5">(5.0)</span>
+                </div>
+                <h3 class="font-serif text-sm sm:text-lg font-bold text-brandBlack group-hover:text-brandPurple transition-colors leading-tight line-clamp-1">
+                  ${product.name}
+                </h3>
+                <p class="text-[10px] sm:text-xs text-gray-500 line-clamp-2 leading-relaxed">
+                  ${product.desc}
+                </p>
+              </div>
+              
+              <div class="pt-3 border-t border-gray-100 flex flex-col xs:flex-row xs:items-center xs:justify-between gap-2 xs:gap-0 mt-auto">
+                <span class="text-sm sm:text-lg font-extrabold text-brandBlack">
+                  $${product.price.toFixed(2)}
+                </span>
+                <button onclick="addToCart('${product.id}')" class="bg-brandBlack hover:bg-brandPurple text-white hover:text-white px-2.5 py-2 sm:px-4 sm:py-2.5 rounded-full text-[10px] sm:text-xs font-bold transition-all shadow-md flex items-center justify-center space-x-1">
+                  <i class="fa-solid fa-cart-plus text-[10px] sm:text-xs"></i>
+                  <span class="hidden xs:inline">Add to Bag</span>
+                  <span class="xs:hidden">Add</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+        productsGrid.insertAdjacentHTML('beforeend', cardHtml);
+      });
+    }
+
+    // Filter Products by Category
+    function filterProducts(category) {
+      // Toggle tabs UI
+      const tabs = ['all', 'clothing', 'jewelry'];
+      tabs.forEach(t => {
+        const btn = document.getElementById(`tab-${t}`);
+        if (t === category) {
+          btn.className = "px-6 py-2 rounded-full font-medium text-sm transition-all bg-brandPurple text-white shadow-md";
+        } else {
+          btn.className = "px-6 py-2 rounded-full font-medium text-sm transition-all bg-white text-gray-700 hover:bg-gray-100 border border-gray-300";
+        }
+      });
+
+      // Filter and render
+      if (category === 'all') {
+        renderProducts(PRODUCTS);
+      } else {
+        const filtered = PRODUCTS.filter(p => p.category === category);
+        renderProducts(filtered);
+      }
+    }
+
+    // --- CART LOGIC ---
+    function toggleCartDrawer() {
+      if (cartDrawer.classList.contains('cart-drawer-closed')) {
+        // Open
+        cartDrawer.classList.remove('cart-drawer-closed');
+        cartDrawer.classList.add('cart-drawer-open');
+        cartDrawerOverlay.classList.remove('hidden');
+        setTimeout(() => cartDrawerOverlay.classList.add('opacity-100'), 50);
+        document.body.style.overflow = 'hidden'; // Lock background scroll
+      } else {
+        // Close
+        cartDrawer.classList.remove('cart-drawer-open');
+        cartDrawer.classList.add('cart-drawer-closed');
+        cartDrawerOverlay.classList.remove('opacity-100');
+        setTimeout(() => {
+          cartDrawerOverlay.classList.add('hidden');
+          document.body.style.overflow = 'auto'; // Unlock background scroll
+        }, 300);
+      }
+    }
+
+    function addToCart(productId) {
+      const product = PRODUCTS.find(p => p.id === productId);
+      if (!product) return;
+
+      const existingItem = cart.find(item => item.product.id === productId);
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        cart.push({ product, quantity: 1 });
+      }
+
+      saveCart();
+      updateCartUI();
+      showToast(`Added ${product.name} to your bag!`);
+      
+      // Auto open cart drawer
+      if (cartDrawer.classList.contains('cart-drawer-closed')) {
+        toggleCartDrawer();
+      }
+    }
+
+    function updateQuantity(productId, delta) {
+      const item = cart.find(item => item.product.id === productId);
+      if (!item) return;
+
+      item.quantity += delta;
+      if (item.quantity <= 0) {
+        // Remove item
+        cart = cart.filter(i => i.product.id !== productId);
+      }
+
+      saveCart();
+      updateCartUI();
+    }
+
+    function removeFromCart(productId) {
+      cart = cart.filter(item => item.product.id !== productId);
+      saveCart();
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      // Calculate totals
+      let totalQty = 0;
+      let subtotal = 0;
+      
+      cartDrawerItems.innerHTML = '';
+      
+      cart.forEach(item => {
+        totalQty += item.quantity;
+        const itemSubtotal = item.product.price * item.quantity;
+        subtotal += itemSubtotal;
+
+        // Render card inside drawer
+        const itemHtml = `
+          <div class="flex items-center justify-between space-x-4 border-b border-brandGold/10 pb-4">
+            <div class="w-16 h-20 rounded-lg overflow-hidden bg-gray-900 border border-brandGold/20 flex-shrink-0">
+              <img src="${item.product.image}" alt="${item.product.name}" class="w-full h-full object-cover">
+            </div>
+            
+            <div class="flex-grow space-y-1">
+              <h4 class="font-serif text-sm font-semibold text-white truncate max-w-[180px]">
+                ${item.product.name}
+              </h4>
+              <p class="text-xs text-brandGold font-bold">$${item.product.price.toFixed(2)}</p>
+              
+              <!-- Qty adjusters -->
+              <div class="flex items-center space-x-2.5 pt-1.5">
+                <button onclick="updateQuantity('${item.product.id}', -1)" class="w-6 h-6 rounded-full border border-gray-600 hover:border-brandGold flex items-center justify-center text-xs text-gray-300 hover:text-brandGold transition-colors">
+                  <i class="fa-solid fa-minus"></i>
+                </button>
+                <span class="text-sm font-semibold text-white">${item.quantity}</span>
+                <button onclick="updateQuantity('${item.product.id}', 1)" class="w-6 h-6 rounded-full border border-gray-600 hover:border-brandGold flex items-center justify-center text-xs text-gray-300 hover:text-brandGold transition-colors">
+                  <i class="fa-solid fa-plus"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Remove Button & Item Total -->
+            <div class="flex flex-col items-end justify-between h-20">
+              <button onclick="removeFromCart('${item.product.id}')" class="text-gray-500 hover:text-red-500 transition-colors p-1" aria-label="Remove item">
+                <i class="fa-solid fa-trash-can text-sm"></i>
+              </button>
+              <span class="text-sm font-bold text-white">$${itemSubtotal.toFixed(2)}</span>
+            </div>
+          </div>
+        `;
+        cartDrawerItems.insertAdjacentHTML('beforeend', itemHtml);
+      });
+
+      // Show empty state
+      if (cart.length === 0) {
+        cartDrawerItems.innerHTML = `
+          <div class="flex flex-col items-center justify-center h-64 text-center space-y-4">
+            <div class="w-16 h-16 rounded-full bg-brandGold/5 border border-brandGold/20 flex items-center justify-center text-brandGold text-2xl">
+              <i class="fa-solid fa-bag-shopping"></i>
+            </div>
+            <div class="space-y-1">
+              <h4 class="font-serif text-base font-bold text-white">Your bag is empty</h4>
+              <p class="text-xs text-gray-500 max-w-[200px]">Fill it with authentic garments and gorgeous jewelry!</p>
+            </div>
+            <button onclick="toggleCartDrawer()" class="border border-brandGold text-brandGold font-semibold text-xs px-6 py-2.5 rounded-full hover:bg-brandGold hover:text-brandBlack transition-all">
+              Start Shopping
+            </button>
+          </div>
+        `;
+      }
+
+      // Update badge counts
+      if (totalQty > 0) {
+        cartBadge.innerText = totalQty;
+        cartBadge.classList.remove('scale-0');
+        cartBadge.classList.add('scale-100');
+        
+        cartBadgeMobile.innerText = totalQty;
+        cartBadgeMobile.classList.remove('scale-0');
+        cartBadgeMobile.classList.add('scale-100');
+      } else {
+        cartBadge.classList.remove('scale-100');
+        cartBadge.classList.add('scale-0');
+        
+        cartBadgeMobile.classList.remove('scale-100');
+        cartBadgeMobile.classList.add('scale-0');
+      }
+
+      cartDrawerCount.innerText = `${totalQty} ${totalQty === 1 ? 'Item' : 'Items'}`;
+
+      // Calculate Tax & Final Totals
+      const taxRate = 0.075; // 7.5% Tax Rate
+      const taxAmount = subtotal * taxRate;
+      const totalAmount = subtotal + taxAmount;
+
+      cartSubtotal.innerText = `$${subtotal.toFixed(2)}`;
+      cartTax.innerText = `$${taxAmount.toFixed(2)}`;
+      cartTotal.innerText = `$${totalAmount.toFixed(2)}`;
+
+      // Modal info updating
+      modalTotal.innerText = `$${totalAmount.toFixed(2)}`;
+    }
+
+    // --- TOAST NOTIFICATION ---
+    function showToast(message) {
+      toastMessage.innerText = message;
+      toast.classList.remove('hidden');
+      toast.classList.add('custom-toast');
+      
+      // Remove classes after animation completes
+      setTimeout(() => {
+        toast.classList.add('hidden');
+        toast.classList.remove('custom-toast');
+      }, 3000);
+    }
+
+    // --- CHECKOUT MODAL LOGIC ---
+    let activePaymentMethod = 'stripe';
+
+    function setPaymentMethod(method) {
+      activePaymentMethod = method;
+      
+      const btnStripe = document.getElementById('pay-method-stripe');
+      const btnAlternative = document.getElementById('pay-method-alternative');
+      const btnWhatsapp = document.getElementById('pay-method-whatsapp');
+      
+      const secStripe = document.getElementById('payment-section-stripe');
+      const secAlternative = document.getElementById('payment-section-alternative');
+      const secWhatsapp = document.getElementById('payment-section-whatsapp');
+      
+      const submitBtn = document.getElementById('checkout-submit-btn');
+      const btnText = document.getElementById('submit-btn-text');
+      const lockIcon = submitBtn.querySelector('i');
+      
+      // Reset button classes
+      const inactiveClass = "flex flex-col items-center justify-center bg-gray-900 border border-brandGold/20 rounded-lg p-2 cursor-pointer text-gray-400 hover:text-white transition-all text-center";
+      const activeClass = "flex flex-col items-center justify-center bg-gray-900 border-2 border-brandGold rounded-lg p-2 cursor-pointer text-white transition-all text-center";
+      
+      btnStripe.className = inactiveClass;
+      btnAlternative.className = inactiveClass;
+      btnWhatsapp.className = inactiveClass;
+      
+      secStripe.classList.add('hidden');
+      secAlternative.classList.add('hidden');
+      secWhatsapp.classList.add('hidden');
+      
+      // Make card inputs required or not
+      const cardInputs = document.querySelectorAll('.stripe-input');
+      cardInputs.forEach(input => input.required = false);
+      
+      const totalText = modalTotal.innerText;
+      
+      if (method === 'stripe') {
+        btnStripe.className = activeClass;
+        secStripe.classList.remove('hidden');
+        cardInputs.forEach(input => input.required = true);
+        submitBtn.className = "w-full bg-gradient-to-r from-brandGold to-brandGoldLight hover:from-brandPurple hover:to-brandPurpleDark text-brandBlack hover:text-white font-extrabold py-3.5 rounded-xl shadow-lg hover:shadow-brandPurple/40 transition-all text-sm tracking-wide flex items-center justify-center space-x-2";
+        btnText.innerText = `Pay ${totalText} via Stripe`;
+        if (lockIcon) lockIcon.className = "fa-solid fa-lock text-sm";
+      } else if (method === 'alternative') {
+        btnAlternative.className = activeClass;
+        secAlternative.classList.remove('hidden');
+        submitBtn.className = "w-full bg-gradient-to-r from-brandGold to-brandGoldLight hover:from-brandPurple hover:to-brandPurpleDark text-brandBlack hover:text-white font-extrabold py-3.5 rounded-xl shadow-lg hover:shadow-brandPurple/40 transition-all text-sm tracking-wide flex items-center justify-center space-x-2";
+        btnText.innerText = `Submit Order (${totalText})`;
+        if (lockIcon) lockIcon.className = "fa-solid fa-circle-check text-sm";
+      } else if (method === 'whatsapp') {
+        btnWhatsapp.className = activeClass;
+        secWhatsapp.classList.remove('hidden');
+        submitBtn.className = "w-full bg-[#25D366] hover:bg-[#20ba5a] text-white font-extrabold py-3.5 rounded-xl shadow-lg hover:shadow-green-500/30 transition-all text-sm tracking-wide flex items-center justify-center space-x-2";
+        btnText.innerText = `Send Order via WhatsApp`;
+        if (lockIcon) lockIcon.className = "fa-brands fa-whatsapp text-sm";
+      }
+    }
+
+    function openCheckoutModal() {
+      if (cart.length === 0) {
+        showToast("Add items to your bag first!");
+        return;
+      }
+      
+      // Close cart drawer
+      toggleCartDrawer();
+
+      // Populate Items Summary in Modal
+      modalItemsList.innerHTML = '';
+      cart.forEach(item => {
+        const lineHtml = `
+          <div class="flex justify-between py-1 text-gray-300">
+            <span>${item.quantity}x ${item.product.name}</span>
+            <span>$${(item.product.price * item.quantity).toFixed(2)}</span>
+          </div>
+        `;
+        modalItemsList.insertAdjacentHTML('beforeend', lineHtml);
+      });
+
+      // Show Modal
+      checkoutModalOverlay.classList.remove('hidden');
+      setTimeout(() => checkoutModalOverlay.classList.add('opacity-100'), 50);
+      document.body.style.overflow = 'hidden'; // Lock screen scroll
+      
+      // Reset checkout success overlay if previously shown
+      document.getElementById('checkout-overlay').classList.add('hidden');
+      
+      // Initialize Stripe as default payment method view
+      setPaymentMethod('stripe');
+    }
+
+    function closeCheckoutModal() {
+      checkoutModalOverlay.classList.remove('opacity-100');
+      setTimeout(() => {
+        checkoutModalOverlay.classList.add('hidden');
+        document.body.style.overflow = 'auto'; // Unlock scroll
+      }, 300);
+    }
+
+    function toggleAddressField(show) {
+      const addressTextarea = document.getElementById('checkout-address');
+      const pickupNote = document.getElementById('pickup-note');
+
+      if (show) {
+        addressFieldContainer.classList.remove('hidden');
+        addressTextarea.required = true;
+        pickupNote.innerHTML = `<i class="fa-solid fa-truck text-brandGold mr-1"></i> Shipping handles delivery nationwide. Standard shipping rates apply.`;
+      } else {
+        addressFieldContainer.classList.add('hidden');
+        addressTextarea.required = false;
+        pickupNote.innerHTML = `<i class="fa-solid fa-info-circle mr-1"></i> Pickup from home salon in Rio Rancho, NM. Free of charge.`;
+      }
+    }
+
+    function submitCheckout(event) {
+      event.preventDefault();
+
+      const name = document.getElementById('checkout-name').value;
+      const phone = document.getElementById('checkout-phone').value;
+      const deliveryOption = document.querySelector('input[name="delivery"]:checked').value;
+      const address = document.getElementById('checkout-address').value;
+
+      const overlay = document.getElementById('checkout-overlay');
+      const spinner = document.getElementById('checkout-spinner');
+      const successIcon = document.getElementById('checkout-success-icon');
+      const statusTitle = document.getElementById('checkout-status-title');
+      const statusDesc = document.getElementById('checkout-status-desc');
+      const overlayCloseBtn = document.getElementById('checkout-overlay-close-btn');
+
+      if (activePaymentMethod === 'whatsapp') {
+        // Compile order text
+        let orderText = `Hi Awa! I would like to place an order from Awa African Beauty & Boutique:\n\n`;
+        orderText += `*Customer Details:*\n`;
+        orderText += `- Name: ${name}\n`;
+        orderText += `- Phone: ${phone}\n`;
+        orderText += `- Delivery: ${deliveryOption === 'pickup' ? 'Local Pickup in Rio Rancho' : 'Shipping'}\n`;
+        if (deliveryOption === 'shipping') {
+          orderText += `- Address: ${address}\n`;
+        }
+        orderText += `\n*Items Ordered:*\n`;
+
+        cart.forEach(item => {
+          orderText += `- ${item.quantity}x ${item.product.name} ($${(item.product.price * item.quantity).toFixed(2)})\n`;
+        });
+
+        const taxAmount = parseFloat(cartTax.innerText.replace('$', ''));
+        const totalAmount = parseFloat(cartTotal.innerText.replace('$', ''));
+        orderText += `\nSubtotal: ${cartSubtotal.innerText}\n`;
+        orderText += `Tax: $${taxAmount.toFixed(2)}\n`;
+        orderText += `*Total Amount:* $${totalAmount.toFixed(2)}\n\n`;
+        orderText += `Please confirm availability and instructions for payment. Thank you!`;
+
+        const encodedText = encodeURIComponent(orderText);
+        cart = [];
+        saveCart();
+        updateCartUI();
+
+        closeCheckoutModal();
+        showToast("Redirecting to WhatsApp to send order...");
+
+        const whatsappUrl = `https://wa.me/15055550199?text=${encodedText}`;
+        setTimeout(() => {
+          window.open(whatsappUrl, '_blank');
+        }, 1000);
+
+      } else {
+        // Stripe Card or Alternative Transfer
+        overlay.classList.remove('hidden');
+        spinner.classList.remove('hidden');
+        successIcon.classList.add('hidden');
+        overlayCloseBtn.classList.add('hidden');
+
+        if (activePaymentMethod === 'stripe') {
+          statusTitle.innerText = "Processing Stripe Payment...";
+          statusDesc.innerText = "Connecting to Stripe secure gateway...";
+
+          setTimeout(() => {
+            statusDesc.innerText = "Authorizing credit card transaction...";
+          }, 1500);
+
+          setTimeout(() => {
+            statusDesc.innerText = "Finalizing Stripe payment charges...";
+          }, 3000);
+
+          setTimeout(() => {
+            // Success
+            spinner.classList.add('hidden');
+            successIcon.classList.remove('hidden');
+            statusTitle.innerText = "Payment Successful!";
+            statusDesc.innerHTML = `Thank you, ${name}! Your Stripe payment was processed successfully. A confirmation receipt has been sent to your phone.`;
+            overlayCloseBtn.classList.remove('hidden');
+
+            cart = [];
+            saveCart();
+            updateCartUI();
+          }, 4500);
+
+        } else if (activePaymentMethod === 'alternative') {
+          statusTitle.innerText = "Submitting Order...";
+          statusDesc.innerText = "Registering order details in salon database...";
+
+          setTimeout(() => {
+            statusDesc.innerText = "Awaiting verification for bank transfer...";
+          }, 1500);
+
+          setTimeout(() => {
+            // Success
+            spinner.classList.add('hidden');
+            successIcon.classList.remove('hidden');
+            statusTitle.innerText = "Order Reserved!";
+            statusDesc.innerHTML = `Thank you, ${name}! Your order has been reserved. Please ensure you transfer Zelle/Cash App payments within 24 hours to confirm your purchase.`;
+            overlayCloseBtn.classList.remove('hidden');
+
+            cart = [];
+            saveCart();
+            updateCartUI();
+          }, 3000);
+        }
+      }
+    }
+  </script>
+</body>
+</html>
