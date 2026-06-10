@@ -1209,10 +1209,30 @@
             </div>
           </div>
         </div>
-        <!-- Close button -->
-        <button onclick="toggleAwaChat()" class="text-gray-400 hover:text-brandGold transition-colors p-1" aria-label="Close Chat Window">
-          <i class="fa-solid fa-xmark text-lg"></i>
-        </button>
+        <!-- Action buttons -->
+        <div class="flex items-center space-x-2">
+          <button onclick="toggleChatSettings()" class="text-gray-400 hover:text-brandGold transition-colors p-1" aria-label="Chat Settings">
+            <i class="fa-solid fa-gear text-base"></i>
+          </button>
+          <button onclick="toggleAwaChat()" class="text-gray-400 hover:text-brandGold transition-colors p-1" aria-label="Close Chat Window">
+            <i class="fa-solid fa-xmark text-lg"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Settings Panel (slide-down) -->
+      <div id="awa-chat-settings" class="hidden bg-gray-950 border-b border-brandGold/20 p-4 space-y-3 transition-all duration-300">
+        <div class="flex items-center justify-between">
+          <label for="gemini-key-input" class="text-[10px] font-bold text-brandGold uppercase tracking-wider">Unlocks AI Awa (Gemini)</label>
+          <button type="button" onclick="closeChatSettings()" class="text-gray-400 hover:text-red-500 transition-colors"><i class="fa-solid fa-xmark text-sm"></i></button>
+        </div>
+        <div class="space-y-2">
+          <input type="password" id="gemini-key-input" class="w-full bg-gray-900 border border-brandGold/20 focus:border-brandGold focus:ring-1 focus:ring-brandGold rounded-lg px-3 py-1.5 text-white text-xs outline-none transition-colors" placeholder="Enter Google Gemini API Key...">
+          <div class="flex items-center justify-between gap-2">
+            <p class="text-[9px] text-gray-500 leading-normal">Your key is saved locally in your browser's localStorage and is only sent directly to Google Gemini API servers.</p>
+            <button type="button" onclick="saveChatSettings()" class="bg-brandGold hover:bg-brandPurple text-brandBlack hover:text-white px-3 py-1.5 rounded-lg text-[10px] font-bold transition-all flex-shrink-0">Save Key</button>
+          </div>
+        </div>
       </div>
 
       <!-- Messages Pane -->
@@ -2277,6 +2297,13 @@
     }
 
     // --- AWA CHAT AGENT LOGIC ---
+    let awaChatHistory = [
+      {
+        role: 'model',
+        parts: [{ text: "Welcome, Queen! 👑 I'm Awa, your royal styling assistant. How can I help you elevate your look today?" }]
+      }
+    ];
+
     function toggleAwaChat() {
       const card = document.getElementById('awa-chat-card');
       const label = document.getElementById('awa-chat-label');
@@ -2300,13 +2327,48 @@
       }
     }
 
+    function toggleChatSettings() {
+      const settings = document.getElementById('awa-chat-settings');
+      const keyInput = document.getElementById('gemini-key-input');
+
+      if (settings.classList.contains('hidden')) {
+        const storedKey = localStorage.getItem('awa_gemini_api_key') || '';
+        keyInput.value = storedKey;
+        settings.classList.remove('hidden');
+      } else {
+        settings.classList.add('hidden');
+      }
+    }
+
+    function closeChatSettings() {
+      document.getElementById('awa-chat-settings').classList.add('hidden');
+    }
+
+    function saveChatSettings() {
+      const keyInput = document.getElementById('gemini-key-input');
+      const key = keyInput.value.trim();
+
+      if (key === '') {
+        localStorage.removeItem('awa_gemini_api_key');
+        showToast("Gemini API Key removed. Chatbot will use rules-based responses.");
+      } else {
+        localStorage.setItem('awa_gemini_api_key', key);
+        showToast("Gemini API Key saved! AI Awa is now active.");
+      }
+      closeChatSettings();
+    }
+
     function scrollToChatBottom() {
       const pane = document.getElementById('awa-chat-messages');
       pane.scrollTop = pane.scrollHeight;
     }
 
     function formatChatMessage(text) {
+      // Basic markdown bold to HTML <strong>
       let formatted = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+      // Basic markdown bullet points to styled paragraphs
+      formatted = formatted.replace(/^\s*-\s*(.*?)$/gm, '<div class="flex items-start space-x-1 mt-1"><span class="text-brandGold">•</span><span>$1</span></div>');
+      // Basic newlines to linebreaks
       formatted = formatted.replace(/\n/g, '<br/>');
       return formatted;
     }
@@ -2322,6 +2384,12 @@
       `;
       pane.insertAdjacentHTML('beforeend', msgHtml);
       scrollToChatBottom();
+
+      // Store in history
+      awaChatHistory.push({
+        role: 'user',
+        parts: [{ text: text }]
+      });
     }
 
     function appendAwaMessage(text) {
@@ -2337,6 +2405,12 @@
       `;
       pane.insertAdjacentHTML('beforeend', msgHtml);
       scrollToChatBottom();
+
+      // Store in history
+      awaChatHistory.push({
+        role: 'model',
+        parts: [{ text: text }]
+      });
     }
 
     function appendTypingIndicator() {
@@ -2414,6 +2488,49 @@
       return "I want to make sure I answer you perfectly! Ask me about **braids**, **boutique items**, **pricing**, **location & hours**, or **how to book**. You can also text me directly on WhatsApp at (505) 555-0199.";
     }
 
+    async function generateAwaResponse(userText) {
+      const apiKey = localStorage.getItem('awa_gemini_api_key');
+
+      if (apiKey && apiKey.trim() !== '') {
+        try {
+          const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+          const systemInstructionText = "You are Awa (Hauwa), a warm, professional African hair braiding expert and boutique owner located in Rio Rancho, New Mexico. You speak like a kind, supportive styling guide (using words like 'Queen', 'Sis', 'Darling' and emojis like 👑, 💇, 👗, ✨). Answer all questions about the salon and boutique: \n- Braiding: Classic Box Braids (from $160, 4-6h), Knotless Braids (from $180, 5-7h), Locs Maintenance (from $110, 2.5-4h), Cornrows & Feed-ins (from $85, 1.5-3h).\n- Boutique: Royal Kente Dress ($125), Ankara Wax Kimono ($95), Nefertiti Beaded Choker ($45), Golden Bangles ($35).\n- Location: Private home studio in Rio Rancho, NM (87144) near High Resort Blvd / NM-528. Private parking.\n- Hours: Mon-Sat, 8 AM - 7 PM. Closed Sundays.\n- Bookings: Direct clients to click the 'Book Appointment' button on the website to open the calendar schedule.\n- Checkout options: Zelle, Cash App, Venmo, Cash, or Stripe Card.\nKeep your answers conversational, natural, friendly, and relatively brief (under 3-4 sentences).";
+
+          const body = {
+            systemInstruction: {
+              parts: [{ text: systemInstructionText }]
+            },
+            contents: awaChatHistory
+          };
+
+          const response = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body)
+          });
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+
+          const data = await response.json();
+          const reply = data.candidates[0].content.parts[0].text;
+          removeTypingIndicator();
+          appendAwaMessage(reply);
+          return;
+        } catch (e) {
+          console.error("Gemini API error, falling back to local engine:", e);
+        }
+      }
+
+      // Fallback local response generator
+      setTimeout(() => {
+        removeTypingIndicator();
+        const reply = getAwaReply(userText);
+        appendAwaMessage(reply);
+      }, 1000);
+    }
+
     function handleChatSubmit(event) {
       event.preventDefault();
       const input = document.getElementById('awa-chat-input');
@@ -2424,11 +2541,7 @@
       appendUserMessage(text);
       appendTypingIndicator();
 
-      setTimeout(() => {
-        removeTypingIndicator();
-        const reply = getAwaReply(text);
-        appendAwaMessage(reply);
-      }, 1000);
+      generateAwaResponse(text);
     }
 
     function sendQuickReply(topic) {
@@ -2436,10 +2549,8 @@
       appendTypingIndicator();
 
       setTimeout(() => {
-        removeTypingIndicator();
-        const reply = getAwaReply(topic);
-        appendAwaMessage(reply);
-      }, 800);
+        generateAwaResponse(topic);
+      }, 200);
     }
   </script>
 </body>
