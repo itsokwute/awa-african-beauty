@@ -1230,7 +1230,10 @@
           <input type="password" id="gemini-key-input" class="w-full bg-gray-900 border border-brandGold/20 focus:border-brandGold focus:ring-1 focus:ring-brandGold rounded-lg px-3 py-1.5 text-white text-xs outline-none transition-colors" placeholder="Enter Google Gemini API Key...">
           <div class="flex items-center justify-between gap-2">
             <p class="text-[9px] text-gray-500 leading-normal">Your key is saved locally in your browser's localStorage and is only sent directly to Google Gemini API servers.</p>
-            <button type="button" onclick="saveChatSettings()" class="bg-brandGold hover:bg-brandPurple text-brandBlack hover:text-white px-3 py-1.5 rounded-lg text-[10px] font-bold transition-all flex-shrink-0">Save Key</button>
+            <div class="flex space-x-2 flex-shrink-0">
+              <button type="button" onclick="clearChatHistory()" class="border border-red-500/50 hover:bg-red-500/10 text-red-500 px-3 py-1.5 rounded-lg text-[10px] font-bold transition-all">Clear History</button>
+              <button type="button" onclick="saveChatSettings()" class="bg-brandGold hover:bg-brandPurple text-brandBlack hover:text-white px-3 py-1.5 rounded-lg text-[10px] font-bold transition-all flex-shrink-0">Save Key</button>
+            </div>
           </div>
         </div>
       </div>
@@ -1387,6 +1390,7 @@
     window.addEventListener('DOMContentLoaded', () => {
       renderProducts(PRODUCTS);
       loadCart();
+      loadChatHistory();
       
       // Event listeners
       cartBtn.addEventListener('click', toggleCartDrawer);
@@ -1801,6 +1805,11 @@
       event.preventDefault();
 
       const name = document.getElementById('checkout-name').value;
+      const nameWords = name.trim().split(/\s+/);
+      if (nameWords.length > 0) {
+        const capitalized = nameWords.map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(' ');
+        localStorage.setItem('awa_visitor_name', capitalized);
+      }
       const phone = document.getElementById('checkout-phone').value;
       const deliveryOption = document.querySelector('input[name="delivery"]:checked').value;
       const address = document.getElementById('checkout-address').value;
@@ -2235,6 +2244,13 @@
     function submitBooking(event) {
       event.preventDefault();
 
+      const clientName = document.getElementById('booking-name').value;
+      const nameWords = clientName.trim().split(/\s+/);
+      if (nameWords.length > 0) {
+        const capitalized = nameWords.map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(' ');
+        localStorage.setItem('awa_visitor_name', capitalized);
+      }
+
       // Switch to Step 3 display
       document.getElementById('booking-details-form').classList.add('hidden');
       document.getElementById('booking-step-3').classList.remove('hidden');
@@ -2358,6 +2374,105 @@
       closeChatSettings();
     }
 
+    function loadChatHistory() {
+      const stored = localStorage.getItem('awa_chat_history');
+      const pane = document.getElementById('awa-chat-messages');
+
+      if (stored) {
+        try {
+          awaChatHistory = JSON.parse(stored);
+          pane.innerHTML = '';
+
+          awaChatHistory.forEach((msg, idx) => {
+            const text = msg.parts[0].text;
+            if (msg.role === 'user') {
+              const msgHtml = `
+                <div class="flex items-start justify-end space-x-2.5">
+                  <div class="bg-brandPurple border border-brandPurpleDark rounded-2xl rounded-tr-none p-3 text-white leading-normal max-w-[82%]">
+                    <p>${text}</p>
+                  </div>
+                </div>
+              `;
+              pane.insertAdjacentHTML('beforeend', msgHtml);
+            } else {
+              const formatted = formatChatMessage(text);
+              const msgHtml = `
+                <div class="flex items-start space-x-2.5">
+                  <img src="assets/owner_profile.png" alt="Awa" class="w-7 h-7 object-cover rounded-full border border-brandGold/20 flex-shrink-0 mt-0.5">
+                  <div class="bg-gray-900/80 border border-brandGold/15 rounded-2xl rounded-tl-none p-3 text-gray-200 leading-normal max-w-[82%] space-y-1">
+                    <p>${formatted}</p>
+                  </div>
+                </div>
+              `;
+              pane.insertAdjacentHTML('beforeend', msgHtml);
+
+              if (idx === 0 && awaChatHistory.length === 1) {
+                appendChips(pane);
+              }
+            }
+          });
+          scrollToChatBottom();
+        } catch (e) {
+          console.error("Error loading chat history:", e);
+          resetChatHistory();
+        }
+      } else {
+        resetChatHistory();
+      }
+    }
+
+    function resetChatHistory() {
+      awaChatHistory = [
+        {
+          role: 'model',
+          parts: [{ text: "Welcome, Queen! 👑 I'm Awa, your royal styling assistant. How can I help you elevate your look today?" }]
+        }
+      ];
+      localStorage.removeItem('awa_chat_history');
+
+      const pane = document.getElementById('awa-chat-messages');
+      pane.innerHTML = `
+        <!-- Initial Greetings -->
+        <div class="flex items-start space-x-2.5">
+          <img src="assets/owner_profile.png" alt="Awa" class="w-7 h-7 object-cover rounded-full border border-brandGold/20 flex-shrink-0 mt-0.5">
+          <div class="bg-gray-900/80 border border-brandGold/15 rounded-2xl rounded-tl-none p-3 text-gray-200 leading-normal max-w-[82%] space-y-2">
+            <p>Welcome, Queen! 👑 I'm Awa, your royal styling assistant. How can I help you elevate your look today?</p>
+            <p class="text-[10px] text-gray-400">Feel free to ask me anything about braiding, boutique items, prices, location, or bookings!</p>
+          </div>
+        </div>
+      `;
+      appendChips(pane);
+      scrollToChatBottom();
+    }
+
+    function appendChips(pane) {
+      const chipsHtml = `
+        <!-- Quick Reply Chips -->
+        <div id="awa-chat-chips" class="pl-9 flex flex-wrap gap-2 pt-1">
+          <button onclick="sendQuickReply('💇 Braiding Pricing')" class="bg-brandBlack border border-brandGold/30 hover:border-brandPurple hover:bg-brandPurple/20 text-brandGold hover:text-white rounded-full px-3 py-1.5 text-[10px] font-semibold transition-all">
+            💇 Braid Pricing
+          </button>
+          <button onclick="sendQuickReply('👗 Boutique Items')" class="bg-brandBlack border border-brandGold/30 hover:border-brandPurple hover:bg-brandPurple/20 text-brandGold hover:text-white rounded-full px-3 py-1.5 text-[10px] font-semibold transition-all">
+            👗 Boutique Items
+          </button>
+          <button onclick="sendQuickReply('📍 Studio Location & Hours')" class="bg-brandBlack border border-brandGold/30 hover:border-brandPurple hover:bg-brandPurple/20 text-brandGold hover:text-white rounded-full px-3 py-1.5 text-[10px] font-semibold transition-all">
+            📍 Studio Location
+          </button>
+          <button onclick="sendQuickReply('📅 How do I Book?')" class="bg-brandBlack border border-brandGold/30 hover:border-brandPurple hover:bg-brandPurple/20 text-brandGold hover:text-white rounded-full px-3 py-1.5 text-[10px] font-semibold transition-all">
+            📅 How to Book
+          </button>
+        </div>
+      `;
+      pane.insertAdjacentHTML('beforeend', chipsHtml);
+    }
+
+    function clearChatHistory() {
+      resetChatHistory();
+      localStorage.removeItem('awa_visitor_name');
+      showToast("Chat history and saved name cleared!");
+      closeChatSettings();
+    }
+
     function scrollToChatBottom() {
       const pane = document.getElementById('awa-chat-messages');
       pane.scrollTop = pane.scrollHeight;
@@ -2371,6 +2486,21 @@
       // Basic newlines to linebreaks
       formatted = formatted.replace(/\n/g, '<br/>');
       return formatted;
+    }
+
+    function extractNameFromText(text) {
+      // Patterns: "my name is Clara", "i am Clara", "call me Clara"
+      const nameMatch = text.match(/(?:my name is|i am|call me)\s+([a-zA-Z\s]{2,20})/i);
+      if (nameMatch && nameMatch[1]) {
+        const potentialName = nameMatch[1].trim();
+        const words = potentialName.split(/\s+/);
+        if (words.length <= 3) {
+          const capitalized = words.map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(' ');
+          localStorage.setItem('awa_visitor_name', capitalized);
+          return capitalized;
+        }
+      }
+      return null;
     }
 
     function appendUserMessage(text) {
@@ -2390,6 +2520,10 @@
         role: 'user',
         parts: [{ text: text }]
       });
+      localStorage.setItem('awa_chat_history', JSON.stringify(awaChatHistory));
+
+      // Attempt to extract visitor name
+      extractNameFromText(text);
     }
 
     function appendAwaMessage(text) {
@@ -2411,6 +2545,7 @@
         role: 'model',
         parts: [{ text: text }]
       });
+      localStorage.setItem('awa_chat_history', JSON.stringify(awaChatHistory));
     }
 
     function appendTypingIndicator() {
@@ -2438,63 +2573,72 @@
 
     function getAwaReply(query) {
       const q = query.toLowerCase().trim();
+      const name = localStorage.getItem('awa_visitor_name') || 'Queen';
+
+      // Name introduction match
+      const nameIntro = query.match(/(?:my name is|i am|call me)\s+([a-zA-Z\s]{2,20})/i);
+      if (nameIntro && nameIntro[1]) {
+        const extracted = nameIntro[1].trim().split(/\s+/).map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(' ');
+        return `Lovely to meet you, ${extracted}! 👑 I have saved your name so I will remember you. How can I help you today? I can tell you about our braiding styles, boutique, or scheduling!`;
+      }
 
       // Greetings
       if (q.includes("hi") || q.includes("hello") || q.includes("hey") || q.includes("greetings") || q.includes("anyone there")) {
-        return "Hello Queen! 👑 How can I help you today? I can tell you about our **braiding services**, show you **boutique fashion**, or help you get scheduled right away:\n\n<button onclick=\"openBookingModal('all')\" class=\"inline-block bg-brandGold hover:bg-brandPurple text-brandBlack hover:text-white font-extrabold px-4 py-2 rounded-xl text-[10px] tracking-wide mt-1.5 transition-all text-center\">📅 Book Appointment Now</button>";
+        return `Hello ${name}! 👑 How can I help you today? I can tell you about our **braiding services**, show you **boutique fashion**, or help you get scheduled right away:\n\n<button onclick="openBookingModal('all')" class="inline-block bg-brandGold hover:bg-brandPurple text-brandBlack hover:text-white font-extrabold px-4 py-2 rounded-xl text-[10px] tracking-wide mt-1.5 transition-all text-center">📅 Book Appointment Now</button>`;
       }
 
       // Pricing
       if (q.includes("price") || q.includes("cost") || q.includes("rate") || q.includes("pricing") || q.includes("how much")) {
-        return "Our professional braiding starts from $85 to $180+ depending on style and length. Our boutique items include maxi dresses ($125), kimonos ($95), chokers ($45), and golden bangles ($35). You can see the full pricing on our page, or schedule a session right now:\n\n<button onclick=\"openBookingModal('all')\" class=\"inline-block bg-brandGold hover:bg-brandPurple text-brandBlack hover:text-white font-extrabold px-4 py-2 rounded-xl text-[10px] tracking-wide mt-1.5 transition-all text-center\">📅 Book Appointment Now</button>";
+        return `Our professional braiding starts from $85 to $180+ depending on style and length, ${name}. Our boutique items include maxi dresses ($125), kimonos ($95), chokers ($45), and golden bangles ($35). You can see the full pricing on our page, or schedule a session right now:\n\n<button onclick="openBookingModal('all')" class="inline-block bg-brandGold hover:bg-brandPurple text-brandBlack hover:text-white font-extrabold px-4 py-2 rounded-xl text-[10px] tracking-wide mt-1.5 transition-all text-center">📅 Book Appointment Now</button>`;
       }
 
       // Braids
       if (q.includes("braid") || q.includes("hair") || q.includes("style") || q.includes("knotless") || q.includes("box braid") || q.includes("locs") || q.includes("cornrow")) {
-        return "I offer premium, royal-grade hair services:\n\n- **Classic Box Braids** (From $160 | 4-6 hrs)\n- **Knotless Braids** (From $180 | 5-7 hrs)\n- **Locs Maintenance** (From $110 | 2.5-4 hrs)\n- **Cornrows & Feed-ins** (From $85 | 1.5-3 hrs)\n\nLength and braid extensions can be customized to your taste. You can open my scheduling calendar right here to pick your time slot:\n\n<button onclick=\"openBookingModal('all')\" class=\"inline-block bg-brandGold hover:bg-brandPurple text-brandBlack hover:text-white font-extrabold px-4 py-2 rounded-xl text-[10px] tracking-wide mt-1.5 transition-all text-center\">📅 Book Appointment Now</button>";
+        return `I offer premium, royal-grade hair services, ${name}:\n\n- **Classic Box Braids** (From $160 | 4-6 hrs)\n- **Knotless Braids** (From $180 | 5-7 hrs)\n- **Locs Maintenance** (From $110 | 2.5-4 hrs)\n- **Cornrows & Feed-ins** (From $85 | 1.5-3 hrs)\n\nLength and braid extensions can be customized to your taste. You can open my scheduling calendar right here to pick your time slot:\n\n<button onclick="openBookingModal('all')" class="inline-block bg-brandGold hover:bg-brandPurple text-brandBlack hover:text-white font-extrabold px-4 py-2 rounded-xl text-[10px] tracking-wide mt-1.5 transition-all text-center">📅 Book Appointment Now</button>`;
       }
 
       // Boutique
       if (q.includes("boutique") || q.includes("shop") || q.includes("clothing") || q.includes("dress") || q.includes("jewelry") || q.includes("buy") || q.includes("kente") || q.includes("kimono") || q.includes("choker") || q.includes("bangle")) {
-        return "Our Boutique features gorgeous, hand-curated African statements:\n- **Royal Kente Maxi Dress** ($125)\n- **Ankara Wax Kimono Jacket** ($95)\n- **Nefertiti Beaded Choker Set** ($45)\n- **Engraved Golden Brass Bangles** ($35)\n\nYou can add these straight to your Bag and pay securely via Stripe, alternative transfer, or WhatsApp!";
+        return `Our Boutique features gorgeous, hand-curated African statements, ${name}:\n- **Royal Kente Maxi Dress** ($125)\n- **Ankara Wax Kimono Jacket** ($95)\n- **Nefertiti Beaded Choker Set** ($45)\n- **Engraved Golden Brass Bangles** ($35)\n\nYou can add these straight to your Bag and pay securely via Stripe, alternative transfer, or WhatsApp!`;
       }
 
       // Location
       if (q.includes("location") || q.includes("address") || q.includes("where") || q.includes("studio") || q.includes("salon") || q.includes("rio rancho") || q.includes("albuquerque") || q.includes("nm")) {
-        return "My salon is home-based in **Rio Rancho, New Mexico (87144)**, located near High Resort Blvd and NM-528. It is a secure, private studio environment. I text the exact address to you within 2 hours of scheduling verification!";
+        return `My salon is home-based in **Rio Rancho, New Mexico (87144)**, ${name}, located near High Resort Blvd and NM-528. It is a secure, private studio environment. I text the exact address to you within 2 hours of scheduling verification!`;
       }
 
       // Hours
       if (q.includes("hour") || q.includes("open") || q.includes("when") || q.includes("time") || q.includes("days") || q.includes("saturday") || q.includes("sunday")) {
-        return "We are open **Monday through Saturday, from 8:00 AM to 7:00 PM**. We are closed on Sundays to rest. All sessions are by appointment only.";
+        return `We are open **Monday through Saturday, from 8:00 AM to 7:00 PM**, ${name}. We are closed on Sundays to rest. All sessions are by appointment only.`;
       }
 
       // Booking
       if (q.includes("book") || q.includes("schedule") || q.includes("appointment") || q.includes("reserve") || q.includes("calendar")) {
-        return "You can book directly on this website! Just click the button below to open my scheduling calendar, see available slots, and reserve your royal session instantly:\n\n<button onclick=\"openBookingModal('all')\" class=\"inline-block bg-brandGold hover:bg-brandPurple text-brandBlack hover:text-white font-extrabold px-4 py-2 rounded-xl text-[10px] tracking-wide mt-1.5 transition-all text-center\">📅 Book Appointment Now</button>";
+        return `You can book directly on this website, ${name}! Just click the button below to open my scheduling calendar, see available slots, and reserve your royal session instantly:\n\n<button onclick="openBookingModal('all')" class="inline-block bg-brandGold hover:bg-brandPurple text-brandBlack hover:text-white font-extrabold px-4 py-2 rounded-xl text-[10px] tracking-wide mt-1.5 transition-all text-center">📅 Book Appointment Now</button>`;
       }
 
       // WhatsApp
       if (q.includes("whatsapp") || q.includes("phone") || q.includes("number") || q.includes("contact") || q.includes("message") || q.includes("call") || q.includes("text")) {
-        return "You can contact me directly on WhatsApp at **(505) 555-0199** for inquiries, styling consultation, or custom clothing sizes!";
+        return `You can contact me directly on WhatsApp at **(505) 555-0199** for inquiries, styling consultation, or custom clothing sizes, ${name}!`;
       }
 
       // Thanks
       if (q.includes("thank") || q.includes("thanks") || q.includes("awesome") || q.includes("great") || q.includes("cool")) {
-        return "You are so welcome! It's my absolute pleasure to serve you. Let me know if you have any other questions! 💜👑";
+        return `You are so welcome, ${name}! It's my absolute pleasure to serve you. Let me know if you have any other questions! 💜👑`;
       }
 
       // Default fallback
-      return "I want to make sure I answer you perfectly! Ask me about **braids**, **boutique items**, **pricing**, or **location & hours**. You can also book a session directly using this button:\n\n<button onclick=\"openBookingModal('all')\" class=\"inline-block bg-brandGold hover:bg-brandPurple text-brandBlack hover:text-white font-extrabold px-4 py-2 rounded-xl text-[10px] tracking-wide mt-1.5 transition-all text-center\">📅 Book Appointment Now</button>";
+      return `I want to make sure I answer you perfectly, ${name}! Ask me about **braids**, **boutique items**, **pricing**, or **location & hours**. You can also book a session directly using this button:\n\n<button onclick="openBookingModal('all')" class="inline-block bg-brandGold hover:bg-brandPurple text-brandBlack hover:text-white font-extrabold px-4 py-2 rounded-xl text-[10px] tracking-wide mt-1.5 transition-all text-center">📅 Book Appointment Now</button>`;
     }
 
     async function generateAwaResponse(userText) {
       const apiKey = localStorage.getItem('awa_gemini_api_key');
+      const visitorName = localStorage.getItem('awa_visitor_name') || 'Unknown';
 
       if (apiKey && apiKey.trim() !== '') {
         try {
           const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
-          const systemInstructionText = "You are Awa (Hauwa), a warm, professional African hair braiding expert and boutique owner located in Rio Rancho, New Mexico. You speak like a kind, supportive styling guide (using words like 'Queen', 'Sis', 'Darling' and emojis like 👑, 💇, 👗, ✨). Answer all questions about the salon and boutique: \n- Braiding: Classic Box Braids (from $160, 4-6h), Knotless Braids (from $180, 5-7h), Locs Maintenance (from $110, 2.5-4h), Cornrows & Feed-ins (from $85, 1.5-3h).\n- Boutique: Royal Kente Dress ($125), Ankara Wax Kimono ($95), Nefertiti Beaded Choker ($45), Golden Bangles ($35).\n- Location: Private home studio in Rio Rancho, NM (87144) near High Resort Blvd / NM-528. Private parking.\n- Hours: Mon-Sat, 8 AM - 7 PM. Closed Sundays.\n- Bookings: Whenever the user asks to book or schedule, you MUST include this exact HTML button in your text to let them book immediately without leaving the page: <button onclick=\"openBookingModal('all')\" class=\"inline-block bg-brandGold hover:bg-brandPurple text-brandBlack hover:text-white font-extrabold px-4 py-2 rounded-xl text-[10px] tracking-wide mt-1.5 transition-all text-center\">📅 Book Appointment Now</button>. Do not suggest clicking other buttons or visiting other pages.\n- Checkout options: Zelle, Cash App, Venmo, Cash, or Stripe Card.\nKeep your answers conversational, natural, friendly, and relatively brief (under 3-4 sentences).";
+          const systemInstructionText = `You are Awa (Hauwa), a warm, professional African hair braiding expert and boutique owner located in Rio Rancho, New Mexico. You speak like a kind, supportive styling guide (using words like 'Queen', 'Sis', 'Darling' and emojis like 👑, 💇, 👗, ✨). The current visitor's name is: ${visitorName}. If their name is known (not 'Unknown'), address them by their name (e.g. 'Hello Clara!') instead of just 'Queen' to show you remember them. Answer all questions about the salon and boutique: \n- Braiding: Classic Box Braids (from $160, 4-6h), Knotless Braids (from $180, 5-7h), Locs Maintenance (from $110, 2.5-4h), Cornrows & Feed-ins (from $85, 1.5-3h).\n- Boutique: Royal Kente Dress ($125), Ankara Wax Kimono ($95), Nefertiti Beaded Choker ($45), Golden Bangles ($35).\n- Location: Private home studio in Rio Rancho, NM (87144) near High Resort Blvd / NM-528. Private parking.\n- Hours: Mon-Sat, 8 AM - 7 PM. Closed Sundays.\n- Bookings: Whenever the user asks to book or schedule, you MUST include this exact HTML button in your text to let them book immediately without leaving the page: <button onclick="openBookingModal('all')" class="inline-block bg-brandGold hover:bg-brandPurple text-brandBlack hover:text-white font-extrabold px-4 py-2 rounded-xl text-[10px] tracking-wide mt-1.5 transition-all text-center">📅 Book Appointment Now</button>. Do not suggest clicking other buttons or visiting other pages.\n- Checkout options: Zelle, Cash App, Venmo, Cash, or Stripe Card.\nKeep your answers conversational, natural, friendly, and relatively brief (under 3-4 sentences).`;
 
           const body = {
             systemInstruction: {
