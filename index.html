@@ -796,6 +796,23 @@
 
         <!-- STEP 1: DATE & TIME SELECTOR -->
         <div id="booking-step-1" class="space-y-4">
+          <!-- Booksy Shortcut Banner -->
+          <div class="bg-brandPurple/20 border border-brandPurpleDark rounded-xl p-3.5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+            <div class="flex items-center space-x-2.5">
+              <div class="w-8 h-8 rounded-full bg-brandGold/10 border border-brandGold/30 flex items-center justify-center text-brandGold text-sm flex-shrink-0">
+                <i class="fa-solid fa-calendar-days"></i>
+              </div>
+              <div>
+                <p class="font-bold text-white text-[11px] sm:text-xs">Prefer using Booksy?</p>
+                <p class="text-gray-400 text-[10px] sm:text-[11px] leading-tight">Book through my official Booksy profile for automated notifications and reminders.</p>
+              </div>
+            </div>
+            <a id="modal-booksy-link" href="https://booksy.com" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto text-center bg-brandGold hover:bg-brandPurple text-brandBlack hover:text-white font-extrabold px-4 py-2 rounded-lg text-[10px] tracking-wide transition-all uppercase whitespace-nowrap flex items-center justify-center space-x-1.5 shadow-md">
+              <span>Book via Booksy</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+            </a>
+          </div>
+
           <!-- Service Dropdown Selector -->
           <div>
             <label for="booking-service" class="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1.5">Select Service *</label>
@@ -1127,7 +1144,7 @@
           <div class="flex space-x-4 pt-2">
             <a href="https://www.tiktok.com/@styledbyawa" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-brandGold transition-colors text-lg" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
             <a href="https://www.facebook.com/slayedbyhauwa" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-brandGold transition-colors text-lg" aria-label="Facebook"><i class="fa-brands fa-square-facebook"></i></a>
-            <a href="https://booksy.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-brandGold transition-colors text-lg" aria-label="Booksy"><i class="fa-solid fa-calendar-days"></i></a>
+            <a id="footer-booksy-link" href="https://booksy.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-brandGold transition-colors text-lg" aria-label="Booksy"><i class="fa-solid fa-calendar-days"></i></a>
           </div>
         </div>
 
@@ -1300,6 +1317,9 @@
 
   <!-- JAVASCRIPT BUSINESS LOGIC -->
   <script>
+    // --- GLOBAL CONFIGURATION ---
+    const BOOKSY_URL = "https://booksy.com"; // Replace with your actual Booksy booking page URL
+
     // --- PRODUCT DATA ---
     const PRODUCTS = [
       {
@@ -1391,6 +1411,12 @@
       renderProducts(PRODUCTS);
       loadCart();
       loadChatHistory();
+      
+      // Configure Booksy links from global constant
+      const modalBooksy = document.getElementById('modal-booksy-link');
+      const footerBooksy = document.getElementById('footer-booksy-link');
+      if (modalBooksy) modalBooksy.href = BOOKSY_URL;
+      if (footerBooksy) footerBooksy.href = BOOKSY_URL;
       
       // Event listeners
       cartBtn.addEventListener('click', toggleCartDrawer);
