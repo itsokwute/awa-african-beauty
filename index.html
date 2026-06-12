@@ -302,581 +302,714 @@
           <span><strong>Notice:</strong> Services are located in a private home-based studio in Rio Rancho, NM. Complete address is automatically sent upon booking confirmation.</span>
         </div>
       </div>
-      <!-- CATEGORY 1: HAIR STYLING & BRAIDING SERVICES -->
+      <!-- Accordion Container for Services -->
       <div class="mt-8 space-y-6">
-        <div class="border-b border-brandGold/20 pb-2">
-          <h3 class="text-xl sm:text-2xl font-bold font-serif text-white flex items-center space-x-3">
-            <span class="text-brandGold"><i class="fa-solid fa-scissors"></i></span>
-            <span>Hair Styling &amp; Braiding Services</span>
-          </h3>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+
+        <!-- CATEGORY 1: HAIR STYLING & BRAIDING SERVICES -->
+        <div class="border border-brandGold/20 rounded-2xl overflow-hidden bg-brandBlack/40 backdrop-blur-md">
+          <button class="w-full flex items-center justify-between p-5 sm:p-6 text-left focus:outline-none transition-colors duration-300 hover:bg-brandPurple/10 group" onclick="toggleAccordion('category-1')">
+            <div class="flex items-center space-x-4">
+              <span class="text-brandGold text-xl sm:text-2xl"><i class="fa-solid fa-scissors"></i></span>
+              <h3 class="text-lg sm:text-xl font-bold font-serif text-white group-hover:text-brandGold transition-colors duration-300">Hair Styling &amp; Braiding Services</h3>
+            </div>
+            <span class="text-brandGold transition-transform duration-300" id="accordion-chevron-category-1" style="transform: rotate(180deg);">
+              <i class="fa-solid fa-chevron-up"></i>
+            </span>
+          </button>
           
-          <!-- Box Braids -->
-          <div class="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
-            <div class="space-y-4">
-              <div class="flex items-center justify-between text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
-                <span>Braiding</span>
-                <i class="fa-solid fa-scissors text-brandGold/50"></i>
+          <div id="accordion-content-category-1" class="accordion-content expanded" style="max-height: none;">
+            <div class="p-5 sm:p-6 border-t border-brandGold/10">
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                
+                <!-- Box Braids -->
+                <div class="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
+                  <div class="space-y-4">
+                    <div class="flex items-center justify-between text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
+                      <span>Braiding</span>
+                      <i class="fa-solid fa-scissors text-brandGold/50"></i>
+                    </div>
+                    <!-- Card Image Frame -->
+                    <div class="relative overflow-hidden rounded-xl border border-brandGold/30 aspect-video bg-gray-950/80 group-hover:border-brandGold/60 transition-all duration-300">
+                      <img src="assets/service_box_braids.png" alt="Box Braids" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                    </div>
+                    <h4 class="text-lg font-bold font-serif text-white tracking-wide group-hover:text-brandGold transition-colors duration-300">Box Braids</h4>
+                    <div class="flex flex-wrap gap-2 pt-1 pb-2">
+                      <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border border-brandGold/40 text-brandGold bg-brandGold/5">$200+</span>
+                      <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-white/10 text-gray-300">
+                        <i class="fa-regular fa-clock mr-1 text-[10px]"></i> 4 Hours
+                      </span>
+                    </div>
+                    <p class="text-xs text-gray-400 font-light leading-relaxed font-sans">
+                      Timeless, clean-sectioned braiding. Highly protective and versatile. Styled to your desired thickness and length.
+                    </p>
+                  </div>
+                  <div class="pt-5">
+                    <a href="https://booksy.com/en-us/dl/show-business/1246452?utm_medium=c2c_referral" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-brandGold hover:bg-brandPurple hover:text-white border border-brandGold hover:border-brandPurple text-brandBlack hover:shadow-lg hover:shadow-brandPurple/50 font-bold text-sm tracking-wide transition-all shadow-md">
+                      Book via Booksy
+                    </a>
+                  </div>
+                </div>
+
+                <!-- Knotless Braids -->
+                <div class="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
+                  <div class="space-y-4">
+                    <div class="flex items-center justify-between text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
+                      <span>Braiding</span>
+                      <i class="fa-solid fa-scissors text-brandGold/50"></i>
+                    </div>
+                    <!-- Card Image Frame -->
+                    <div class="relative overflow-hidden rounded-xl border border-brandGold/30 aspect-video bg-gray-950/80 group-hover:border-brandGold/60 transition-all duration-300">
+                      <img src="assets/service_knotless.png" alt="Knotless Braids" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                    </div>
+                    <h4 class="text-lg font-bold font-serif text-white tracking-wide group-hover:text-brandGold transition-colors duration-300">Knotless Braids</h4>
+                    <div class="flex flex-wrap gap-2 pt-1 pb-2">
+                      <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border border-brandGold/40 text-brandGold bg-brandGold/5">$300+</span>
+                      <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-white/10 text-gray-300">
+                        <i class="fa-regular fa-clock mr-1 text-[10px]"></i> 5 Hours
+                      </span>
+                    </div>
+                    <p class="text-xs text-gray-400 font-light leading-relaxed font-sans">
+                      Lighter, scalp-friendly braiding starting flat at the root. Delivers a highly natural look and dynamic flexibility.
+                    </p>
+                  </div>
+                  <div class="pt-5">
+                    <a href="https://booksy.com/en-us/dl/show-business/1246452?utm_medium=c2c_referral" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-brandGold hover:bg-brandPurple hover:text-white border border-brandGold hover:border-brandPurple text-brandBlack hover:shadow-lg hover:shadow-brandPurple/50 font-bold text-sm tracking-wide transition-all shadow-md">
+                      Book via Booksy
+                    </a>
+                  </div>
+                </div>
+
+                <!-- Boho Braids -->
+                <div class="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
+                  <div class="space-y-4">
+                    <div class="flex items-center justify-between text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
+                      <span>Braiding</span>
+                      <i class="fa-solid fa-scissors text-brandGold/50"></i>
+                    </div>
+                    <!-- Card Image Frame -->
+                    <div class="relative overflow-hidden rounded-xl border border-brandGold/30 aspect-video bg-gray-950/80 group-hover:border-brandGold/60 transition-all duration-300">
+                      <img src="https://images.unsplash.com/photo-1605980776566-0486c3ac7617?auto=format&fit=crop&w=600&h=450&q=80" alt="Boho Braids" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                    </div>
+                    <h4 class="text-lg font-bold font-serif text-white tracking-wide group-hover:text-brandGold transition-colors duration-300">Boho Braids</h4>
+                    <div class="flex flex-wrap gap-2 pt-1 pb-2">
+                      <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border border-brandGold/40 text-brandGold bg-brandGold/5">$300+</span>
+                      <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-white/10 text-gray-300">
+                        <i class="fa-regular fa-clock mr-1 text-[10px]"></i> 5 Hours
+                      </span>
+                    </div>
+                    <p class="text-xs text-gray-400 font-light leading-relaxed font-sans">
+                      Gorgeous braids with curly synthetic or human hair extensions left loose. Creates a stunning, voluminous bohemian style.
+                    </p>
+                  </div>
+                  <div class="pt-5">
+                    <a href="https://booksy.com/en-us/dl/show-business/1246452?utm_medium=c2c_referral" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-brandGold hover:bg-brandPurple hover:text-white border border-brandGold hover:border-brandPurple text-brandBlack hover:shadow-lg hover:shadow-brandPurple/50 font-bold text-sm tracking-wide transition-all shadow-md">
+                      Book via Booksy
+                    </a>
+                  </div>
+                </div>
+
+                <!-- Cornrows -->
+                <div class="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
+                  <div class="space-y-4">
+                    <div class="flex items-center justify-between text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
+                      <span>Braiding</span>
+                      <i class="fa-solid fa-scissors text-brandGold/50"></i>
+                    </div>
+                    <!-- Card Image Frame -->
+                    <div class="relative overflow-hidden rounded-xl border border-brandGold/30 aspect-video bg-gray-950/80 group-hover:border-brandGold/60 transition-all duration-300">
+                      <img src="assets/service_cornrows.png" alt="Cornrows" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                    </div>
+                    <h4 class="text-lg font-bold font-serif text-white tracking-wide group-hover:text-brandGold transition-colors duration-300">Cornrows</h4>
+                    <div class="flex flex-wrap gap-2 pt-1 pb-2">
+                      <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border border-brandGold/40 text-brandGold bg-brandGold/5">$75+</span>
+                    </div>
+                    <p class="text-xs text-gray-400 font-light leading-relaxed font-sans">
+                      Sleek, beautiful scalp cornrows. Perfect for elegant, quick, and low-maintenance styling.
+                    </p>
+                  </div>
+                  <div class="pt-5">
+                    <a href="https://booksy.com/en-us/dl/show-business/1246452?utm_medium=c2c_referral" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-brandGold hover:bg-brandPurple hover:text-white border border-brandGold hover:border-brandPurple text-brandBlack hover:shadow-lg hover:shadow-brandPurple/50 font-bold text-sm tracking-wide transition-all shadow-md">
+                      Book via Booksy
+                    </a>
+                  </div>
+                </div>
+
+                <!-- Cornrows with Box Braids -->
+                <div class="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
+                  <div class="space-y-4">
+                    <div class="flex items-center justify-between text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
+                      <span>Braiding</span>
+                      <i class="fa-solid fa-scissors text-brandGold/50"></i>
+                    </div>
+                    <!-- Card Image Frame -->
+                    <div class="relative overflow-hidden rounded-xl border border-brandGold/30 aspect-video bg-gray-950/80 group-hover:border-brandGold/60 transition-all duration-300">
+                      <img src="https://images.unsplash.com/photo-1595959183077-23469efe52c7?auto=format&fit=crop&w=600&h=450&q=80" alt="Cornrows with Box Braids" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                    </div>
+                    <h4 class="text-lg font-bold font-serif text-white tracking-wide group-hover:text-brandGold transition-colors duration-300">Cornrows with Box Braids</h4>
+                    <div class="flex flex-wrap gap-2 pt-1 pb-2">
+                      <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border border-brandGold/40 text-brandGold bg-brandGold/5">$200+</span>
+                      <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-white/10 text-gray-300">
+                        <i class="fa-solid fa-circle-info mr-1 text-[10px]"></i> 3+ Hours
+                      </span>
+                    </div>
+                    <p class="text-xs text-gray-400 font-light leading-relaxed font-sans">
+                      Combine the structured beauty of front-row cornrows with full-bodied box braids in the back.
+                    </p>
+                  </div>
+                  <div class="pt-5">
+                    <a href="https://booksy.com/en-us/dl/show-business/1246452?utm_medium=c2c_referral" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-brandGold hover:bg-brandPurple hover:text-white border border-brandGold hover:border-brandPurple text-brandBlack hover:shadow-lg hover:shadow-brandPurple/50 font-bold text-sm tracking-wide transition-all shadow-md">
+                      Book via Booksy
+                    </a>
+                  </div>
+                </div>
+
+                <!-- Senegalese Twist -->
+                <div class="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
+                  <div class="space-y-4">
+                    <div class="flex items-center justify-between text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
+                      <span>Braiding</span>
+                      <i class="fa-solid fa-scissors text-brandGold/50"></i>
+                    </div>
+                    <!-- Card Image Frame -->
+                    <div class="relative overflow-hidden rounded-xl border border-brandGold/30 aspect-video bg-gray-950/80 group-hover:border-brandGold/60 transition-all duration-300">
+                      <img src="https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?auto=format&fit=crop&w=600&h=450&q=80" alt="Senegalese Twist" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                    </div>
+                    <h4 class="text-lg font-bold font-serif text-white tracking-wide group-hover:text-brandGold transition-colors duration-300">Senegalese Twist</h4>
+                    <div class="flex flex-wrap gap-2 pt-1 pb-2">
+                      <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border border-brandGold/40 text-brandGold bg-brandGold/5">$200+</span>
+                      <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-white/10 text-gray-300 text-[10px]">
+                        <i class="fa-solid fa-circle-info mr-1"></i> Size/Length Varies
+                      </span>
+                    </div>
+                    <p class="text-xs text-gray-400 font-light leading-relaxed font-sans">
+                      Two-strand twists made with smooth kanekalon hair, giving a sleek and neat rope-like appearance.
+                    </p>
+                  </div>
+                  <div class="pt-5">
+                    <a href="https://booksy.com/en-us/dl/show-business/1246452?utm_medium=c2c_referral" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-brandGold hover:bg-brandPurple hover:text-white border border-brandGold hover:border-brandPurple text-brandBlack hover:shadow-lg hover:shadow-brandPurple/50 font-bold text-sm tracking-wide transition-all shadow-md">
+                      Book via Booksy
+                    </a>
+                  </div>
+                </div>
+
+                <!-- Passion Twist -->
+                <div class="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
+                  <div class="space-y-4">
+                    <div class="flex items-center justify-between text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
+                      <span>Braiding</span>
+                      <i class="fa-solid fa-scissors text-brandGold/50"></i>
+                    </div>
+                    <!-- Card Image Frame -->
+                    <div class="relative overflow-hidden rounded-xl border border-brandGold/30 aspect-video bg-gray-950/80 group-hover:border-brandGold/60 transition-all duration-300">
+                      <img src="https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?auto=format&fit=crop&w=600&h=450&q=80" alt="Passion Twist" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                    </div>
+                    <h4 class="text-lg font-bold font-serif text-white tracking-wide group-hover:text-brandGold transition-colors duration-300">Passion Twist</h4>
+                    <div class="flex flex-wrap gap-2 pt-1 pb-2">
+                      <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border border-brandGold/40 text-brandGold bg-brandGold/5">$200+</span>
+                    </div>
+                    <p class="text-xs text-gray-400 font-light leading-relaxed font-sans">
+                      Beautiful, soft twists using water wave extensions for a curly, textured bohemian twist look.
+                    </p>
+                  </div>
+                  <div class="pt-5">
+                    <a href="https://booksy.com/en-us/dl/show-business/1246452?utm_medium=c2c_referral" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-brandGold hover:bg-brandPurple hover:text-white border border-brandGold hover:border-brandPurple text-brandBlack hover:shadow-lg hover:shadow-brandPurple/50 font-bold text-sm tracking-wide transition-all shadow-md">
+                      Book via Booksy
+                    </a>
+                  </div>
+                </div>
+
+                <!-- Kinky Twist -->
+                <div class="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
+                  <div class="space-y-4">
+                    <div class="flex items-center justify-between text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
+                      <span>Braiding</span>
+                      <i class="fa-solid fa-scissors text-brandGold/50"></i>
+                    </div>
+                    <!-- Card Image Frame -->
+                    <div class="relative overflow-hidden rounded-xl border border-brandGold/30 aspect-video bg-gray-950/80 group-hover:border-brandGold/60 transition-all duration-300">
+                      <img src="https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?auto=format&fit=crop&w=600&h=450&q=80" alt="Kinky Twist" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                    </div>
+                    <h4 class="text-lg font-bold font-serif text-white tracking-wide group-hover:text-brandGold transition-colors duration-300">Kinky Twist</h4>
+                    <div class="flex flex-wrap gap-2 pt-1 pb-2">
+                      <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border border-brandGold/40 text-brandGold bg-brandGold/5">$200+</span>
+                    </div>
+                    <p class="text-xs text-gray-400 font-light leading-relaxed font-sans">
+                      Textured, natural-looking twists made with kinky extension hair, mimicking authentic type 4 hair.
+                    </p>
+                  </div>
+                  <div class="pt-5">
+                    <a href="https://booksy.com/en-us/dl/show-business/1246452?utm_medium=c2c_referral" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-brandGold hover:bg-brandPurple hover:text-white border border-brandGold hover:border-brandPurple text-brandBlack hover:shadow-lg hover:shadow-brandPurple/50 font-bold text-sm tracking-wide transition-all shadow-md">
+                      Book via Booksy
+                    </a>
+                  </div>
+                </div>
+
+                <!-- Micro Braids (Box Braid) -->
+                <div class="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
+                  <div class="space-y-4">
+                    <div class="flex items-center justify-between text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
+                      <span>Braiding</span>
+                      <i class="fa-solid fa-scissors text-brandGold/50"></i>
+                    </div>
+                    <!-- Card Image Frame -->
+                    <div class="relative overflow-hidden rounded-xl border border-brandGold/30 aspect-video bg-gray-950/80 group-hover:border-brandGold/60 transition-all duration-300">
+                      <img src="https://images.unsplash.com/photo-1640539343714-c361421f1fe9?auto=format&fit=crop&w=600&h=450&q=80" alt="Micro Braids" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                    </div>
+                    <h4 class="text-lg font-bold font-serif text-white tracking-wide group-hover:text-brandGold transition-colors duration-300">Micro Braids (Box Braid)</h4>
+                    <div class="flex flex-wrap gap-2 pt-1 pb-2">
+                      <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border border-brandGold/40 text-brandGold bg-brandGold/5">$400+</span>
+                      <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-white/10 text-gray-300">
+                        <i class="fa-regular fa-clock mr-1 text-[10px]"></i> 8 Hours
+                      </span>
+                    </div>
+                    <p class="text-xs text-gray-400 font-light leading-relaxed font-sans">
+                      Extremely fine, delicate individual box braids. Requires meticulous styling but delivers maximum longevity and flow.
+                    </p>
+                  </div>
+                  <div class="pt-5">
+                    <a href="https://booksy.com/en-us/dl/show-business/1246452?utm_medium=c2c_referral" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-brandGold hover:bg-brandPurple hover:text-white border border-brandGold hover:border-brandPurple text-brandBlack hover:shadow-lg hover:shadow-brandPurple/50 font-bold text-sm tracking-wide transition-all shadow-md">
+                      Book via Booksy
+                    </a>
+                  </div>
+                </div>
+
               </div>
-              <h4 class="text-lg font-bold font-serif text-white tracking-wide group-hover:text-brandGold transition-colors duration-300">Box Braids</h4>
-              <div class="flex flex-wrap gap-2 pt-1 pb-2">
-                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border border-brandGold/40 text-brandGold bg-brandGold/5">$200+</span>
-                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-white/10 text-gray-300">
-                  <i class="fa-regular fa-clock mr-1 text-[10px]"></i> 4 Hours
-                </span>
-              </div>
-              <p class="text-xs text-gray-400 font-light leading-relaxed font-sans">
-                Timeless, clean-sectioned braiding. Highly protective and versatile. Styled to your desired thickness and length.
-              </p>
-            </div>
-            <div class="pt-5">
-              <a href="https://booksy.com/en-us/dl/show-business/1246452?utm_medium=c2c_referral" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-brandGold hover:bg-brandPurple hover:text-white border border-brandGold hover:border-brandPurple text-brandBlack hover:shadow-lg hover:shadow-brandPurple/50 font-bold text-sm tracking-wide transition-all shadow-md">
-                Book via Booksy
-              </a>
             </div>
           </div>
-
-          <!-- Knotless Braids -->
-          <div class="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
-            <div class="space-y-4">
-              <div class="flex items-center justify-between text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
-                <span>Braiding</span>
-                <i class="fa-solid fa-scissors text-brandGold/50"></i>
-              </div>
-              <h4 class="text-lg font-bold font-serif text-white tracking-wide group-hover:text-brandGold transition-colors duration-300">Knotless Braids</h4>
-              <div class="flex flex-wrap gap-2 pt-1 pb-2">
-                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border border-brandGold/40 text-brandGold bg-brandGold/5">$300+</span>
-                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-white/10 text-gray-300">
-                  <i class="fa-regular fa-clock mr-1 text-[10px]"></i> 5 Hours
-                </span>
-              </div>
-              <p class="text-xs text-gray-400 font-light leading-relaxed font-sans">
-                Lighter, scalp-friendly braiding starting flat at the root. Delivers a highly natural look and dynamic flexibility.
-              </p>
-            </div>
-            <div class="pt-5">
-              <a href="https://booksy.com/en-us/dl/show-business/1246452?utm_medium=c2c_referral" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-brandGold hover:bg-brandPurple hover:text-white border border-brandGold hover:border-brandPurple text-brandBlack hover:shadow-lg hover:shadow-brandPurple/50 font-bold text-sm tracking-wide transition-all shadow-md">
-                Book via Booksy
-              </a>
-            </div>
-          </div>
-
-          <!-- Boho Braids -->
-          <div class="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
-            <div class="space-y-4">
-              <div class="flex items-center justify-between text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
-                <span>Braiding</span>
-                <i class="fa-solid fa-scissors text-brandGold/50"></i>
-              </div>
-              <h4 class="text-lg font-bold font-serif text-white tracking-wide group-hover:text-brandGold transition-colors duration-300">Boho Braids</h4>
-              <div class="flex flex-wrap gap-2 pt-1 pb-2">
-                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border border-brandGold/40 text-brandGold bg-brandGold/5">$300+</span>
-                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-white/10 text-gray-300">
-                  <i class="fa-regular fa-clock mr-1 text-[10px]"></i> 5 Hours
-                </span>
-              </div>
-              <p class="text-xs text-gray-400 font-light leading-relaxed font-sans">
-                Gorgeous braids with curly synthetic or human hair extensions left loose. Creates a stunning, voluminous bohemian style.
-              </p>
-            </div>
-            <div class="pt-5">
-              <a href="https://booksy.com/en-us/dl/show-business/1246452?utm_medium=c2c_referral" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-brandGold hover:bg-brandPurple hover:text-white border border-brandGold hover:border-brandPurple text-brandBlack hover:shadow-lg hover:shadow-brandPurple/50 font-bold text-sm tracking-wide transition-all shadow-md">
-                Book via Booksy
-              </a>
-            </div>
-          </div>
-
-          <!-- Cornrows -->
-          <div class="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
-            <div class="space-y-4">
-              <div class="flex items-center justify-between text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
-                <span>Braiding</span>
-                <i class="fa-solid fa-scissors text-brandGold/50"></i>
-              </div>
-              <h4 class="text-lg font-bold font-serif text-white tracking-wide group-hover:text-brandGold transition-colors duration-300">Cornrows</h4>
-              <div class="flex flex-wrap gap-2 pt-1 pb-2">
-                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border border-brandGold/40 text-brandGold bg-brandGold/5">$75+</span>
-              </div>
-              <p class="text-xs text-gray-400 font-light leading-relaxed font-sans">
-                Sleek, beautiful scalp cornrows. Perfect for elegant, quick, and low-maintenance styling.
-              </p>
-            </div>
-            <div class="pt-5">
-              <a href="https://booksy.com/en-us/dl/show-business/1246452?utm_medium=c2c_referral" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-brandGold hover:bg-brandPurple hover:text-white border border-brandGold hover:border-brandPurple text-brandBlack hover:shadow-lg hover:shadow-brandPurple/50 font-bold text-sm tracking-wide transition-all shadow-md">
-                Book via Booksy
-              </a>
-            </div>
-          </div>
-
-          <!-- Cornrows with Box Braids -->
-          <div class="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
-            <div class="space-y-4">
-              <div class="flex items-center justify-between text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
-                <span>Braiding</span>
-                <i class="fa-solid fa-scissors text-brandGold/50"></i>
-              </div>
-              <h4 class="text-lg font-bold font-serif text-white tracking-wide group-hover:text-brandGold transition-colors duration-300">Cornrows with Box Braids</h4>
-              <div class="flex flex-wrap gap-2 pt-1 pb-2">
-                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border border-brandGold/40 text-brandGold bg-brandGold/5">$200+</span>
-                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-white/10 text-gray-300">
-                  <i class="fa-solid fa-circle-info mr-1 text-[10px]"></i> 3+ Hours
-                </span>
-              </div>
-              <p class="text-xs text-gray-400 font-light leading-relaxed font-sans">
-                Combine the structured beauty of front-row cornrows with full-bodied box braids in the back.
-              </p>
-            </div>
-            <div class="pt-5">
-              <a href="https://booksy.com/en-us/dl/show-business/1246452?utm_medium=c2c_referral" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-brandGold hover:bg-brandPurple hover:text-white border border-brandGold hover:border-brandPurple text-brandBlack hover:shadow-lg hover:shadow-brandPurple/50 font-bold text-sm tracking-wide transition-all shadow-md">
-                Book via Booksy
-              </a>
-            </div>
-          </div>
-
-          <!-- Senegalese Twist -->
-          <div class="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
-            <div class="space-y-4">
-              <div class="flex items-center justify-between text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
-                <span>Braiding</span>
-                <i class="fa-solid fa-scissors text-brandGold/50"></i>
-              </div>
-              <h4 class="text-lg font-bold font-serif text-white tracking-wide group-hover:text-brandGold transition-colors duration-300">Senegalese Twist</h4>
-              <div class="flex flex-wrap gap-2 pt-1 pb-2">
-                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border border-brandGold/40 text-brandGold bg-brandGold/5">$200+</span>
-                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-white/10 text-gray-300 text-[10px]">
-                  <i class="fa-solid fa-circle-info mr-1"></i> Size/Length Varies
-                </span>
-              </div>
-              <p class="text-xs text-gray-400 font-light leading-relaxed font-sans">
-                Two-strand twists made with smooth kanekalon hair, giving a sleek and neat rope-like appearance.
-              </p>
-            </div>
-            <div class="pt-5">
-              <a href="https://booksy.com/en-us/dl/show-business/1246452?utm_medium=c2c_referral" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-brandGold hover:bg-brandPurple hover:text-white border border-brandGold hover:border-brandPurple text-brandBlack hover:shadow-lg hover:shadow-brandPurple/50 font-bold text-sm tracking-wide transition-all shadow-md">
-                Book via Booksy
-              </a>
-            </div>
-          </div>
-
-          <!-- Passion Twist -->
-          <div class="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
-            <div class="space-y-4">
-              <div class="flex items-center justify-between text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
-                <span>Braiding</span>
-                <i class="fa-solid fa-scissors text-brandGold/50"></i>
-              </div>
-              <h4 class="text-lg font-bold font-serif text-white tracking-wide group-hover:text-brandGold transition-colors duration-300">Passion Twist</h4>
-              <div class="flex flex-wrap gap-2 pt-1 pb-2">
-                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border border-brandGold/40 text-brandGold bg-brandGold/5">$200+</span>
-              </div>
-              <p class="text-xs text-gray-400 font-light leading-relaxed font-sans">
-                Beautiful, soft twists using water wave extensions for a curly, textured bohemian twist look.
-              </p>
-            </div>
-            <div class="pt-5">
-              <a href="https://booksy.com/en-us/dl/show-business/1246452?utm_medium=c2c_referral" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-brandGold hover:bg-brandPurple hover:text-white border border-brandGold hover:border-brandPurple text-brandBlack hover:shadow-lg hover:shadow-brandPurple/50 font-bold text-sm tracking-wide transition-all shadow-md">
-                Book via Booksy
-              </a>
-            </div>
-          </div>
-
-          <!-- Kinky Twist -->
-          <div class="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
-            <div class="space-y-4">
-              <div class="flex items-center justify-between text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
-                <span>Braiding</span>
-                <i class="fa-solid fa-scissors text-brandGold/50"></i>
-              </div>
-              <h4 class="text-lg font-bold font-serif text-white tracking-wide group-hover:text-brandGold transition-colors duration-300">Kinky Twist</h4>
-              <div class="flex flex-wrap gap-2 pt-1 pb-2">
-                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border border-brandGold/40 text-brandGold bg-brandGold/5">$200+</span>
-              </div>
-              <p class="text-xs text-gray-400 font-light leading-relaxed font-sans">
-                Textured, natural-looking twists made with kinky extension hair, mimicking authentic type 4 hair.
-              </p>
-            </div>
-            <div class="pt-5">
-              <a href="https://booksy.com/en-us/dl/show-business/1246452?utm_medium=c2c_referral" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-brandGold hover:bg-brandPurple hover:text-white border border-brandGold hover:border-brandPurple text-brandBlack hover:shadow-lg hover:shadow-brandPurple/50 font-bold text-sm tracking-wide transition-all shadow-md">
-                Book via Booksy
-              </a>
-            </div>
-          </div>
-
-          <!-- Micro Braids (Box Braid) -->
-          <div class="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
-            <div class="space-y-4">
-              <div class="flex items-center justify-between text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
-                <span>Braiding</span>
-                <i class="fa-solid fa-scissors text-brandGold/50"></i>
-              </div>
-              <h4 class="text-lg font-bold font-serif text-white tracking-wide group-hover:text-brandGold transition-colors duration-300">Micro Braids (Box Braid)</h4>
-              <div class="flex flex-wrap gap-2 pt-1 pb-2">
-                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border border-brandGold/40 text-brandGold bg-brandGold/5">$400+</span>
-                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-white/10 text-gray-300">
-                  <i class="fa-regular fa-clock mr-1 text-[10px]"></i> 8 Hours
-                </span>
-              </div>
-              <p class="text-xs text-gray-400 font-light leading-relaxed font-sans">
-                Extremely fine, delicate individual box braids. Requires meticulous styling but delivers maximum longevity and flow.
-              </p>
-            </div>
-            <div class="pt-5">
-              <a href="https://booksy.com/en-us/dl/show-business/1246452?utm_medium=c2c_referral" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-brandGold hover:bg-brandPurple hover:text-white border border-brandGold hover:border-brandPurple text-brandBlack hover:shadow-lg hover:shadow-brandPurple/50 font-bold text-sm tracking-wide transition-all shadow-md">
-                Book via Booksy
-              </a>
-            </div>
-          </div>
-
         </div>
-      </div>
 
-      <!-- CATEGORY 2: LOCS & MAINTENANCE -->
-      <div class="mt-16 space-y-6">
-        <div class="border-b border-brandGold/20 pb-2">
-          <h3 class="text-xl sm:text-2xl font-bold font-serif text-white flex items-center space-x-3">
-            <span class="text-brandGold"><i class="fa-solid fa-crown"></i></span>
-            <span>Locs &amp; Maintenance</span>
-          </h3>
+        <!-- CATEGORY 2: LOCS & MAINTENANCE -->
+        <div class="border border-brandGold/20 rounded-2xl overflow-hidden bg-brandBlack/40 backdrop-blur-md">
+          <button class="w-full flex items-center justify-between p-5 sm:p-6 text-left focus:outline-none transition-colors duration-300 hover:bg-brandPurple/10 group" onclick="toggleAccordion('category-2')">
+            <div class="flex items-center space-x-4">
+              <span class="text-brandGold text-xl sm:text-2xl"><i class="fa-solid fa-crown"></i></span>
+              <h3 class="text-lg sm:text-xl font-bold font-serif text-white group-hover:text-brandGold transition-colors duration-300">Locs &amp; Maintenance</h3>
+            </div>
+            <span class="text-brandGold transition-transform duration-300" id="accordion-chevron-category-2">
+              <i class="fa-solid fa-chevron-down"></i>
+            </span>
+          </button>
+          
+          <div id="accordion-content-category-2" class="accordion-content">
+            <div class="p-5 sm:p-6 border-t border-brandGold/10">
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+
+                <!-- Traditional Locs Maintenance -->
+                <div class="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
+                  <div class="space-y-4">
+                    <div class="flex items-center justify-between text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
+                      <span>Locs</span>
+                      <i class="fa-solid fa-crown text-brandGold/50"></i>
+                    </div>
+                    <!-- Card Image Frame -->
+                    <div class="relative overflow-hidden rounded-xl border border-brandGold/30 aspect-video bg-gray-950/80 group-hover:border-brandGold/60 transition-all duration-300">
+                      <img src="assets/service_locs.png" alt="Traditional Locs Maintenance" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                    </div>
+                    <h4 class="text-lg font-bold font-serif text-white tracking-wide group-hover:text-brandGold transition-colors duration-300">Traditional Locs Maintenance</h4>
+                    <div class="flex flex-wrap gap-2 pt-1 pb-2">
+                      <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border border-brandGold/40 text-brandGold bg-brandGold/5">$150+</span>
+                    </div>
+                    <p class="text-xs text-gray-400 font-light leading-relaxed font-sans">
+                      Meticulous loc retwist, root maintenance, and beautiful styling to keep your locs healthy, clean, and strong.
+                    </p>
+                  </div>
+                  <div class="pt-5">
+                    <a href="https://booksy.com/en-us/dl/show-business/1246452?utm_medium=c2c_referral" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-brandGold hover:bg-brandPurple hover:text-white border border-brandGold hover:border-brandPurple text-brandBlack hover:shadow-lg hover:shadow-brandPurple/50 font-bold text-sm tracking-wide transition-all shadow-md">
+                      Book via Booksy
+                    </a>
+                  </div>
+                </div>
+
+                <!-- Micro Locs Maintenance -->
+                <div class="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
+                  <div class="space-y-4">
+                    <div class="flex items-center justify-between text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
+                      <span>Locs</span>
+                      <i class="fa-solid fa-crown text-brandGold/50"></i>
+                    </div>
+                    <!-- Card Image Frame -->
+                    <div class="relative overflow-hidden rounded-xl border border-brandGold/30 aspect-video bg-gray-950/80 group-hover:border-brandGold/60 transition-all duration-300">
+                      <img src="https://images.unsplash.com/photo-1605497746444-12961529438a?auto=format&fit=crop&w=600&h=450&q=80" alt="Micro Locs Maintenance" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                    </div>
+                    <h4 class="text-lg font-bold font-serif text-white tracking-wide group-hover:text-brandGold transition-colors duration-300">Micro Locs Maintenance</h4>
+                    <div class="flex flex-wrap gap-2 pt-1 pb-2">
+                      <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border border-brandGold/40 text-brandGold bg-brandGold/5">$200+</span>
+                      <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-white/10 text-gray-300">
+                        <i class="fa-regular fa-clock mr-1 text-[10px]"></i> 2.5 Hours
+                      </span>
+                    </div>
+                    <p class="text-xs text-gray-400 font-light leading-relaxed font-sans">
+                      Professional interlocking or palm rolling maintenance for tiny, micro-sized locs to preserve neat parting.
+                    </p>
+                  </div>
+                  <div class="pt-5">
+                    <a href="https://booksy.com/en-us/dl/show-business/1246452?utm_medium=c2c_referral" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-brandGold hover:bg-brandPurple hover:text-white border border-brandGold hover:border-brandPurple text-brandBlack hover:shadow-lg hover:shadow-brandPurple/50 font-bold text-sm tracking-wide transition-all shadow-md">
+                      Book via Booksy
+                    </a>
+                  </div>
+                </div>
+
+                <!-- Micro Locs Starter -->
+                <div class="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
+                  <div class="space-y-4">
+                    <div class="flex items-center justify-between text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
+                      <span>Locs</span>
+                      <i class="fa-solid fa-crown text-brandGold/50"></i>
+                    </div>
+                    <!-- Card Image Frame -->
+                    <div class="relative overflow-hidden rounded-xl border border-brandGold/30 aspect-video bg-gray-950/80 group-hover:border-brandGold/60 transition-all duration-300">
+                      <img src="https://images.unsplash.com/photo-1605497746444-12961529438a?auto=format&fit=crop&w=600&h=450&q=80" alt="Micro Locs Starter" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                    </div>
+                    <h4 class="text-lg font-bold font-serif text-white tracking-wide group-hover:text-brandGold transition-colors duration-300">Micro Locs Starter</h4>
+                    <div class="flex flex-wrap gap-2 pt-1 pb-2">
+                      <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border border-brandGold/40 text-brandGold bg-brandGold/5">$700+</span>
+                      <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-white/10 text-gray-300 text-[10px]">
+                        <i class="fa-solid fa-circle-info mr-1"></i> 2-3 Days
+                      </span>
+                    </div>
+                    <p class="text-xs text-gray-400 font-light leading-relaxed font-sans">
+                      Begin your micro loc journey. Detailed installation of tiny locs using custom technique over multiple sessions.
+                    </p>
+                  </div>
+                  <div class="pt-5">
+                    <a href="https://booksy.com/en-us/dl/show-business/1246452?utm_medium=c2c_referral" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-brandGold hover:bg-brandPurple hover:text-white border border-brandGold hover:border-brandPurple text-brandBlack hover:shadow-lg hover:shadow-brandPurple/50 font-bold text-sm tracking-wide transition-all shadow-md">
+                      Book via Booksy
+                    </a>
+                  </div>
+                </div>
+
+                <!-- Starter Locs -->
+                <div class="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
+                  <div class="space-y-4">
+                    <div class="flex items-center justify-between text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
+                      <span>Locs</span>
+                      <i class="fa-solid fa-crown text-brandGold/50"></i>
+                    </div>
+                    <!-- Card Image Frame -->
+                    <div class="relative overflow-hidden rounded-xl border border-brandGold/30 aspect-video bg-gray-950/80 group-hover:border-brandGold/60 transition-all duration-300">
+                      <img src="https://images.unsplash.com/photo-1605497746444-12961529438a?auto=format&fit=crop&w=600&h=450&q=80" alt="Starter Locs" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                    </div>
+                    <h4 class="text-lg font-bold font-serif text-white tracking-wide group-hover:text-brandGold transition-colors duration-300">Starter Locs</h4>
+                    <div class="flex flex-wrap gap-2 pt-1 pb-2">
+                      <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border border-brandGold/40 text-brandGold bg-brandGold/5">$200+</span>
+                    </div>
+                    <p class="text-xs text-gray-400 font-light leading-relaxed font-sans">
+                      Launch your loc journey with comb coils, two-strand twists, or palm rolling, customized for your hair texture.
+                    </p>
+                  </div>
+                  <div class="pt-5">
+                    <a href="https://booksy.com/en-us/dl/show-business/1246452?utm_medium=c2c_referral" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-brandGold hover:bg-brandPurple hover:text-white border border-brandGold hover:border-brandPurple text-brandBlack hover:shadow-lg hover:shadow-brandPurple/50 font-bold text-sm tracking-wide transition-all shadow-md">
+                      Book via Booksy
+                    </a>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
 
-          <!-- Traditional Locs Maintenance -->
-          <div class="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
-            <div class="space-y-4">
-              <div class="flex items-center justify-between text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
-                <span>Locs</span>
-                <i class="fa-solid fa-crown text-brandGold/50"></i>
-              </div>
-              <h4 class="text-lg font-bold font-serif text-white tracking-wide group-hover:text-brandGold transition-colors duration-300">Traditional Locs Maintenance</h4>
-              <div class="flex flex-wrap gap-2 pt-1 pb-2">
-                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border border-brandGold/40 text-brandGold bg-brandGold/5">$150+</span>
-              </div>
-              <p class="text-xs text-gray-400 font-light leading-relaxed font-sans">
-                Meticulous loc retwist, root maintenance, and beautiful styling to keep your locs healthy, clean, and strong.
-              </p>
+        <!-- CATEGORY 3: EXTENSIONS, WEAVES & TAKE DOWNS -->
+        <div class="border border-brandGold/20 rounded-2xl overflow-hidden bg-brandBlack/40 backdrop-blur-md">
+          <button class="w-full flex items-center justify-between p-5 sm:p-6 text-left focus:outline-none transition-colors duration-300 hover:bg-brandPurple/10 group" onclick="toggleAccordion('category-3')">
+            <div class="flex items-center space-x-4">
+              <span class="text-brandGold text-xl sm:text-2xl"><i class="fa-solid fa-layer-group"></i></span>
+              <h3 class="text-lg sm:text-xl font-bold font-serif text-white group-hover:text-brandGold transition-colors duration-300">Extensions, Weaves &amp; Take Downs</h3>
             </div>
-            <div class="pt-5">
-              <a href="https://booksy.com/en-us/dl/show-business/1246452?utm_medium=c2c_referral" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-brandGold hover:bg-brandPurple hover:text-white border border-brandGold hover:border-brandPurple text-brandBlack hover:shadow-lg hover:shadow-brandPurple/50 font-bold text-sm tracking-wide transition-all shadow-md">
-                Book via Booksy
-              </a>
+            <span class="text-brandGold transition-transform duration-300" id="accordion-chevron-category-3">
+              <i class="fa-solid fa-chevron-down"></i>
+            </span>
+          </button>
+          
+          <div id="accordion-content-category-3" class="accordion-content">
+            <div class="p-5 sm:p-6 border-t border-brandGold/10">
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+
+                <!-- Full Weave -->
+                <div class="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
+                  <div class="space-y-4">
+                    <div class="flex items-center justify-between text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
+                      <span>Extensions</span>
+                      <i class="fa-solid fa-layer-group text-brandGold/50"></i>
+                    </div>
+                    <!-- Card Image Frame -->
+                    <div class="relative overflow-hidden rounded-xl border border-brandGold/30 aspect-video bg-gray-950/80 group-hover:border-brandGold/60 transition-all duration-300">
+                      <img src="https://images.unsplash.com/photo-1605497745246-c941c88d8b42?auto=format&fit=crop&w=600&h=450&q=80" alt="Full Weave" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                    </div>
+                    <h4 class="text-lg font-bold font-serif text-white tracking-wide group-hover:text-brandGold transition-colors duration-300">Full Weave</h4>
+                    <div class="flex flex-wrap gap-2 pt-1 pb-2">
+                      <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border border-brandGold/40 text-brandGold bg-brandGold/5">$150+</span>
+                    </div>
+                    <p class="text-xs text-gray-400 font-light leading-relaxed font-sans">
+                      Full hair sew-in installation with or without leave-out, custom styled to blend seamlessly with your natural hair.
+                    </p>
+                  </div>
+                  <div class="pt-5">
+                    <a href="https://booksy.com/en-us/dl/show-business/1246452?utm_medium=c2c_referral" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-brandGold hover:bg-brandPurple hover:text-white border border-brandGold hover:border-brandPurple text-brandBlack hover:shadow-lg hover:shadow-brandPurple/50 font-bold text-sm tracking-wide transition-all shadow-md">
+                      Book via Booksy
+                    </a>
+                  </div>
+                </div>
+
+                <!-- Track Installation -->
+                <div class="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
+                  <div class="space-y-4">
+                    <div class="flex items-center justify-between text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
+                      <span>Extensions</span>
+                      <i class="fa-solid fa-layer-group text-brandGold/50"></i>
+                    </div>
+                    <!-- Card Image Frame -->
+                    <div class="relative overflow-hidden rounded-xl border border-brandGold/30 aspect-video bg-gray-950/80 group-hover:border-brandGold/60 transition-all duration-300">
+                      <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=600&h=450&q=80" alt="Track Installation" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                    </div>
+                    <h4 class="text-lg font-bold font-serif text-white tracking-wide group-hover:text-brandGold transition-colors duration-300">Track Installation</h4>
+                    <div class="flex flex-wrap gap-2 pt-1 pb-2">
+                      <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border border-brandGold/40 text-brandGold bg-brandGold/5">$120+</span>
+                    </div>
+                    <p class="text-xs text-gray-400 font-light leading-relaxed font-sans">
+                      Strategic placement of tracks (sew-in or beaded) to add customized volume, fullness, and length.
+                    </p>
+                  </div>
+                  <div class="pt-5">
+                    <a href="https://booksy.com/en-us/dl/show-business/1246452?utm_medium=c2c_referral" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-brandGold hover:bg-brandPurple hover:text-white border border-brandGold hover:border-brandPurple text-brandBlack hover:shadow-lg hover:shadow-brandPurple/50 font-bold text-sm tracking-wide transition-all shadow-md">
+                      Book via Booksy
+                    </a>
+                  </div>
+                </div>
+
+                <!-- Crochet Styles -->
+                <div class="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
+                  <div class="space-y-4">
+                    <div class="flex items-center justify-between text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
+                      <span>Extensions</span>
+                      <i class="fa-solid fa-layer-group text-brandGold/50"></i>
+                    </div>
+                    <!-- Card Image Frame -->
+                    <div class="relative overflow-hidden rounded-xl border border-brandGold/30 aspect-video bg-gray-950/80 group-hover:border-brandGold/60 transition-all duration-300">
+                      <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=600&h=450&q=80" alt="Crochet Styles" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                    </div>
+                    <h4 class="text-lg font-bold font-serif text-white tracking-wide group-hover:text-brandGold transition-colors duration-300">Crochet Styles</h4>
+                    <div class="flex flex-wrap gap-2 pt-1 pb-2">
+                      <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border border-brandGold/40 text-brandGold bg-brandGold/5">$100+</span>
+                    </div>
+                    <p class="text-xs text-gray-400 font-light leading-relaxed font-sans">
+                      Quick, protective styling where pre-looped braids, twists, or curls are crocheted into a cornrow base.
+                    </p>
+                  </div>
+                  <div class="pt-5">
+                    <a href="https://booksy.com/en-us/dl/show-business/1246452?utm_medium=c2c_referral" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-brandGold hover:bg-brandPurple hover:text-white border border-brandGold hover:border-brandPurple text-brandBlack hover:shadow-lg hover:shadow-brandPurple/50 font-bold text-sm tracking-wide transition-all shadow-md">
+                      Book via Booksy
+                    </a>
+                  </div>
+                </div>
+
+                <!-- Take Down & Weave Installation -->
+                <div class="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
+                  <div class="space-y-4">
+                    <div class="flex items-center justify-between text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
+                      <span>Extensions</span>
+                      <i class="fa-solid fa-layer-group text-brandGold/50"></i>
+                    </div>
+                    <!-- Card Image Frame -->
+                    <div class="relative overflow-hidden rounded-xl border border-brandGold/30 aspect-video bg-gray-950/80 group-hover:border-brandGold/60 transition-all duration-300">
+                      <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=600&h=450&q=80" alt="Take Down & Weave Installation" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                    </div>
+                    <h4 class="text-lg font-bold font-serif text-white tracking-wide group-hover:text-brandGold transition-colors duration-300">Take Down &amp; Weave Installation</h4>
+                    <div class="flex flex-wrap gap-2 pt-1 pb-2">
+                      <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border border-brandGold/40 text-brandGold bg-brandGold/5">$200+</span>
+                    </div>
+                    <p class="text-xs text-gray-400 font-light leading-relaxed font-sans">
+                      Professional removal of your previous weave or braids, followed by a scalp cleanse, prep, and new full weave installation.
+                    </p>
+                  </div>
+                  <div class="pt-5">
+                    <a href="https://booksy.com/en-us/dl/show-business/1246452?utm_medium=c2c_referral" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-brandGold hover:bg-brandPurple hover:text-white border border-brandGold hover:border-brandPurple text-brandBlack hover:shadow-lg hover:shadow-brandPurple/50 font-bold text-sm tracking-wide transition-all shadow-md">
+                      Book via Booksy
+                    </a>
+                  </div>
+                </div>
+
+              </div>
             </div>
           </div>
-
-          <!-- Micro Locs Maintenance -->
-          <div class="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
-            <div class="space-y-4">
-              <div class="flex items-center justify-between text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
-                <span>Locs</span>
-                <i class="fa-solid fa-crown text-brandGold/50"></i>
-              </div>
-              <h4 class="text-lg font-bold font-serif text-white tracking-wide group-hover:text-brandGold transition-colors duration-300">Micro Locs Maintenance</h4>
-              <div class="flex flex-wrap gap-2 pt-1 pb-2">
-                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border border-brandGold/40 text-brandGold bg-brandGold/5">$200+</span>
-                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-white/10 text-gray-300">
-                  <i class="fa-regular fa-clock mr-1 text-[10px]"></i> 2.5 Hours
-                </span>
-              </div>
-              <p class="text-xs text-gray-400 font-light leading-relaxed font-sans">
-                Professional interlocking or palm rolling maintenance for tiny, micro-sized locs to preserve neat parting.
-              </p>
-            </div>
-            <div class="pt-5">
-              <a href="https://booksy.com/en-us/dl/show-business/1246452?utm_medium=c2c_referral" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-brandGold hover:bg-brandPurple hover:text-white border border-brandGold hover:border-brandPurple text-brandBlack hover:shadow-lg hover:shadow-brandPurple/50 font-bold text-sm tracking-wide transition-all shadow-md">
-                Book via Booksy
-              </a>
-            </div>
-          </div>
-
-          <!-- Micro Locs Starter -->
-          <div class="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
-            <div class="space-y-4">
-              <div class="flex items-center justify-between text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
-                <span>Locs</span>
-                <i class="fa-solid fa-crown text-brandGold/50"></i>
-              </div>
-              <h4 class="text-lg font-bold font-serif text-white tracking-wide group-hover:text-brandGold transition-colors duration-300">Micro Locs Starter</h4>
-              <div class="flex flex-wrap gap-2 pt-1 pb-2">
-                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border border-brandGold/40 text-brandGold bg-brandGold/5">$700+</span>
-                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-white/10 text-gray-300 text-[10px]">
-                  <i class="fa-solid fa-circle-info mr-1"></i> 2-3 Days
-                </span>
-              </div>
-              <p class="text-xs text-gray-400 font-light leading-relaxed font-sans">
-                Begin your micro loc journey. Detailed installation of tiny locs using custom technique over multiple sessions.
-              </p>
-            </div>
-            <div class="pt-5">
-              <a href="https://booksy.com/en-us/dl/show-business/1246452?utm_medium=c2c_referral" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-brandGold hover:bg-brandPurple hover:text-white border border-brandGold hover:border-brandPurple text-brandBlack hover:shadow-lg hover:shadow-brandPurple/50 font-bold text-sm tracking-wide transition-all shadow-md">
-                Book via Booksy
-              </a>
-            </div>
-          </div>
-
-          <!-- Starter Locs -->
-          <div class="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
-            <div class="space-y-4">
-              <div class="flex items-center justify-between text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
-                <span>Locs</span>
-                <i class="fa-solid fa-crown text-brandGold/50"></i>
-              </div>
-              <h4 class="text-lg font-bold font-serif text-white tracking-wide group-hover:text-brandGold transition-colors duration-300">Starter Locs</h4>
-              <div class="flex flex-wrap gap-2 pt-1 pb-2">
-                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border border-brandGold/40 text-brandGold bg-brandGold/5">$200+</span>
-              </div>
-              <p class="text-xs text-gray-400 font-light leading-relaxed font-sans">
-                Launch your loc journey with comb coils, two-strand twists, or palm rolling, customized for your hair texture.
-              </p>
-            </div>
-            <div class="pt-5">
-              <a href="https://booksy.com/en-us/dl/show-business/1246452?utm_medium=c2c_referral" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-brandGold hover:bg-brandPurple hover:text-white border border-brandGold hover:border-brandPurple text-brandBlack hover:shadow-lg hover:shadow-brandPurple/50 font-bold text-sm tracking-wide transition-all shadow-md">
-                Book via Booksy
-              </a>
-            </div>
-          </div>
-
         </div>
-      </div>
 
-      <!-- CATEGORY 3: EXTENSIONS, WEAVES & TAKE DOWNS -->
-      <div class="mt-16 space-y-6">
-        <div class="border-b border-brandGold/20 pb-2">
-          <h3 class="text-xl sm:text-2xl font-bold font-serif text-white flex items-center space-x-3">
-            <span class="text-brandGold"><i class="fa-solid fa-layer-group"></i></span>
-            <span>Extensions, Weaves &amp; Take Downs</span>
-          </h3>
+        <!-- CATEGORY 4: KIDS SERVICES -->
+        <div class="border border-brandGold/20 rounded-2xl overflow-hidden bg-brandBlack/40 backdrop-blur-md">
+          <button class="w-full flex items-center justify-between p-5 sm:p-6 text-left focus:outline-none transition-colors duration-300 hover:bg-brandPurple/10 group" onclick="toggleAccordion('category-4')">
+            <div class="flex items-center space-x-4">
+              <span class="text-brandGold text-xl sm:text-2xl"><i class="fa-regular fa-smile"></i></span>
+              <h3 class="text-lg sm:text-xl font-bold font-serif text-white group-hover:text-brandGold transition-colors duration-300">Kids Services</h3>
+            </div>
+            <span class="text-brandGold transition-transform duration-300" id="accordion-chevron-category-4">
+              <i class="fa-solid fa-chevron-down"></i>
+            </span>
+          </button>
+          
+          <div id="accordion-content-category-4" class="accordion-content">
+            <div class="p-5 sm:p-6 border-t border-brandGold/10">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+
+                <!-- Kids Cornrows (Without Extensions) -->
+                <div class="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
+                  <div class="space-y-4">
+                    <div class="flex items-center justify-between text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
+                      <span>Kids</span>
+                      <i class="fa-regular fa-smile text-brandGold/50"></i>
+                    </div>
+                    <!-- Card Image Frame -->
+                    <div class="relative overflow-hidden rounded-xl border border-brandGold/30 aspect-video bg-gray-950/80 group-hover:border-brandGold/60 transition-all duration-300">
+                      <img src="https://images.unsplash.com/photo-1603575448878-868a20723f5d?auto=format&fit=crop&w=600&h=450&q=80" alt="Kids Cornrows (Without Extensions)" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                    </div>
+                    <h4 class="text-lg font-bold font-serif text-white tracking-wide group-hover:text-brandGold transition-colors duration-300">Kids Cornrows (Without Extensions)</h4>
+                    <div class="flex flex-wrap gap-2 pt-1 pb-2">
+                      <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border border-brandGold/40 text-brandGold bg-brandGold/5">$50+</span>
+                    </div>
+                    <p class="text-xs text-gray-400 font-light leading-relaxed font-sans">
+                      Gentle, neat cornrows for children using their natural hair. Cute, protective, and easy to maintain.
+                    </p>
+                  </div>
+                  <div class="pt-5">
+                    <a href="https://booksy.com/en-us/dl/show-business/1246452?utm_medium=c2c_referral" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-brandGold hover:bg-brandPurple hover:text-white border border-brandGold hover:border-brandPurple text-brandBlack hover:shadow-lg hover:shadow-brandPurple/50 font-bold text-sm tracking-wide transition-all shadow-md">
+                      Book via Booksy
+                    </a>
+                  </div>
+                </div>
+
+                <!-- Kids Cornrows (With Extensions) -->
+                <div class="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
+                  <div class="space-y-4">
+                    <div class="flex items-center justify-between text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
+                      <span>Kids</span>
+                      <i class="fa-regular fa-smile text-brandGold/50"></i>
+                    </div>
+                    <!-- Card Image Frame -->
+                    <div class="relative overflow-hidden rounded-xl border border-brandGold/30 aspect-video bg-gray-950/80 group-hover:border-brandGold/60 transition-all duration-300">
+                      <img src="https://images.unsplash.com/photo-1603575448878-868a20723f5d?auto=format&fit=crop&w=600&h=450&q=80" alt="Kids Cornrows (With Extensions)" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                    </div>
+                    <h4 class="text-lg font-bold font-serif text-white tracking-wide group-hover:text-brandGold transition-colors duration-300">Kids Cornrows (With Extensions)</h4>
+                    <div class="flex flex-wrap gap-2 pt-1 pb-2">
+                      <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border border-brandGold/40 text-brandGold bg-brandGold/5">$100+</span>
+                    </div>
+                    <p class="text-xs text-gray-400 font-light leading-relaxed font-sans">
+                      Beautiful children's cornrows styled with extensions for added length, volume, or fun colorful highlights.
+                    </p>
+                  </div>
+                  <div class="pt-5">
+                    <a href="https://booksy.com/en-us/dl/show-business/1246452?utm_medium=c2c_referral" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-brandGold hover:bg-brandPurple hover:text-white border border-brandGold hover:border-brandPurple text-brandBlack hover:shadow-lg hover:shadow-brandPurple/50 font-bold text-sm tracking-wide transition-all shadow-md">
+                      Book via Booksy
+                    </a>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
 
-          <!-- Full Weave -->
-          <div class="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
-            <div class="space-y-4">
-              <div class="flex items-center justify-between text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
-                <span>Extensions</span>
-                <i class="fa-solid fa-layer-group text-brandGold/50"></i>
-              </div>
-              <h4 class="text-lg font-bold font-serif text-white tracking-wide group-hover:text-brandGold transition-colors duration-300">Full Weave</h4>
-              <div class="flex flex-wrap gap-2 pt-1 pb-2">
-                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border border-brandGold/40 text-brandGold bg-brandGold/5">$150+</span>
-              </div>
-              <p class="text-xs text-gray-400 font-light leading-relaxed font-sans">
-                Full hair sew-in installation with or without leave-out, custom styled to blend seamlessly with your natural hair.
-              </p>
+        <!-- CATEGORY 5: CONSULTATIONS & TREATMENTS -->
+        <div class="border border-brandGold/20 rounded-2xl overflow-hidden bg-brandBlack/40 backdrop-blur-md">
+          <button class="w-full flex items-center justify-between p-5 sm:p-6 text-left focus:outline-none transition-colors duration-300 hover:bg-brandPurple/10 group" onclick="toggleAccordion('category-5')">
+            <div class="flex items-center space-x-4">
+              <span class="text-brandGold text-xl sm:text-2xl"><i class="fa-regular fa-comments"></i></span>
+              <h3 class="text-lg sm:text-xl font-bold font-serif text-white group-hover:text-brandGold transition-colors duration-300">Consultations &amp; Treatments</h3>
             </div>
-            <div class="pt-5">
-              <a href="https://booksy.com/en-us/dl/show-business/1246452?utm_medium=c2c_referral" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-brandGold hover:bg-brandPurple hover:text-white border border-brandGold hover:border-brandPurple text-brandBlack hover:shadow-lg hover:shadow-brandPurple/50 font-bold text-sm tracking-wide transition-all shadow-md">
-                Book via Booksy
-              </a>
+            <span class="text-brandGold transition-transform duration-300" id="accordion-chevron-category-5">
+              <i class="fa-solid fa-chevron-down"></i>
+            </span>
+          </button>
+          
+          <div id="accordion-content-category-5" class="accordion-content">
+            <div class="p-5 sm:p-6 border-t border-brandGold/10">
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+
+                <!-- Standard Consultation -->
+                <div class="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
+                  <div class="space-y-4">
+                    <div class="flex items-center justify-between text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
+                      <span>Consultation</span>
+                      <i class="fa-regular fa-comments text-brandGold/50"></i>
+                    </div>
+                    <!-- Card Image Frame -->
+                    <div class="relative overflow-hidden rounded-xl border border-brandGold/30 aspect-video bg-gray-950/80 group-hover:border-brandGold/60 transition-all duration-300">
+                      <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&h=450&q=80" alt="Standard Consultation" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                    </div>
+                    <h4 class="text-lg font-bold font-serif text-white tracking-wide group-hover:text-brandGold transition-colors duration-300">Standard Consultation</h4>
+                    <div class="flex flex-wrap gap-2 pt-1 pb-2">
+                      <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border border-brandGold/40 text-brandGold bg-brandGold/5">$30</span>
+                    </div>
+                    <p class="text-xs text-gray-400 font-light leading-relaxed font-sans">
+                      Meet with Awa to analyze your hair health, discuss desired styles, custom sizing, and plan your next appointment.
+                    </p>
+                  </div>
+                  <div class="pt-5">
+                    <a href="https://booksy.com/en-us/dl/show-business/1246452?utm_medium=c2c_referral" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-brandGold hover:bg-brandPurple hover:text-white border border-brandGold hover:border-brandPurple text-brandBlack hover:shadow-lg hover:shadow-brandPurple/50 font-bold text-sm tracking-wide transition-all shadow-md">
+                      Book via Booksy
+                    </a>
+                  </div>
+                </div>
+
+                <!-- Natural Hair Growth Consultation -->
+                <div class="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
+                  <div class="space-y-4">
+                    <div class="flex items-center justify-between text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
+                      <span>Consultation</span>
+                      <i class="fa-regular fa-comments text-brandGold/50"></i>
+                    </div>
+                    <!-- Card Image Frame -->
+                    <div class="relative overflow-hidden rounded-xl border border-brandGold/30 aspect-video bg-gray-950/80 group-hover:border-brandGold/60 transition-all duration-300">
+                      <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&h=450&q=80" alt="Natural Hair Growth Consultation" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                    </div>
+                    <h4 class="text-lg font-bold font-serif text-white tracking-wide group-hover:text-brandGold transition-colors duration-300">Natural Hair Growth Consultation</h4>
+                    <div class="flex flex-wrap gap-2 pt-1 pb-2">
+                      <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border border-green-500/40 text-green-400 bg-green-500/5">FREE</span>
+                    </div>
+                    <p class="text-xs text-gray-400 font-light leading-relaxed font-sans">
+                      Dedicated, complimentary session focusing on your hair health, growth goals, and organic care routines.
+                    </p>
+                  </div>
+                  <div class="pt-5">
+                    <a href="https://wa.me/15055550199?text=Hello%20Awa,%20I%20would%20like%20to%20inquire%20about%20a%20Natural%20Hair%20Growth%20Consultation." target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-[#25D366] hover:bg-[#20ba5a] text-white hover:shadow-lg hover:shadow-green-500/30 font-bold text-sm tracking-wide transition-all shadow-md border border-[#25D366] hover:text-white flex items-center justify-center space-x-1">
+                      <i class="fa-brands fa-whatsapp text-sm"></i>
+                      <span>Inquire on WhatsApp</span>
+                    </a>
+                  </div>
+                </div>
+
+                <!-- Scalp Massage -->
+                <div class="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
+                  <div class="space-y-4">
+                    <div class="flex items-center justify-between text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
+                      <span>Treatment</span>
+                      <i class="fa-regular fa-comments text-brandGold/50"></i>
+                    </div>
+                    <!-- Card Image Frame -->
+                    <div class="relative overflow-hidden rounded-xl border border-brandGold/30 aspect-video bg-gray-950/80 group-hover:border-brandGold/60 transition-all duration-300">
+                      <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=600&h=450&q=80" alt="Scalp Massage" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                    </div>
+                    <h4 class="text-lg font-bold font-serif text-white tracking-wide group-hover:text-brandGold transition-colors duration-300">Scalp Massage</h4>
+                    <div class="flex flex-wrap gap-2 pt-1 pb-2">
+                      <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border border-brandGold/40 text-brandGold bg-brandGold/5">$30</span>
+                      <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-white/10 text-gray-300 text-[10px]">
+                        <i class="fa-solid fa-circle-info mr-1"></i> +$15 for extended time
+                      </span>
+                    </div>
+                    <p class="text-xs text-gray-400 font-light leading-relaxed font-sans">
+                      Relaxing, stimulating scalp massage with organic herbal oils to increase blood flow and support natural hair growth.
+                    </p>
+                  </div>
+                  <div class="pt-5">
+                    <a href="https://booksy.com/en-us/dl/show-business/1246452?utm_medium=c2c_referral" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-brandGold hover:bg-brandPurple hover:text-white border border-brandGold hover:border-brandPurple text-brandBlack hover:shadow-lg hover:shadow-brandPurple/50 font-bold text-sm tracking-wide transition-all shadow-md">
+                      Book via Booksy
+                    </a>
+                  </div>
+                </div>
+
+              </div>
             </div>
           </div>
-
-          <!-- Track Installation -->
-          <div class="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
-            <div class="space-y-4">
-              <div class="flex items-center justify-between text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
-                <span>Extensions</span>
-                <i class="fa-solid fa-layer-group text-brandGold/50"></i>
-              </div>
-              <h4 class="text-lg font-bold font-serif text-white tracking-wide group-hover:text-brandGold transition-colors duration-300">Track Installation</h4>
-              <div class="flex flex-wrap gap-2 pt-1 pb-2">
-                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border border-brandGold/40 text-brandGold bg-brandGold/5">$120+</span>
-              </div>
-              <p class="text-xs text-gray-400 font-light leading-relaxed font-sans">
-                Strategic placement of tracks (sew-in or beaded) to add customized volume, fullness, and length.
-              </p>
-            </div>
-            <div class="pt-5">
-              <a href="https://booksy.com/en-us/dl/show-business/1246452?utm_medium=c2c_referral" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-brandGold hover:bg-brandPurple hover:text-white border border-brandGold hover:border-brandPurple text-brandBlack hover:shadow-lg hover:shadow-brandPurple/50 font-bold text-sm tracking-wide transition-all shadow-md">
-                Book via Booksy
-              </a>
-            </div>
-          </div>
-
-          <!-- Crochet Styles -->
-          <div class="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
-            <div class="space-y-4">
-              <div class="flex items-center justify-between text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
-                <span>Extensions</span>
-                <i class="fa-solid fa-layer-group text-brandGold/50"></i>
-              </div>
-              <h4 class="text-lg font-bold font-serif text-white tracking-wide group-hover:text-brandGold transition-colors duration-300">Crochet Styles</h4>
-              <div class="flex flex-wrap gap-2 pt-1 pb-2">
-                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border border-brandGold/40 text-brandGold bg-brandGold/5">$100+</span>
-              </div>
-              <p class="text-xs text-gray-400 font-light leading-relaxed font-sans">
-                Quick, protective styling where pre-looped braids, twists, or curls are crocheted into a cornrow base.
-              </p>
-            </div>
-            <div class="pt-5">
-              <a href="https://booksy.com/en-us/dl/show-business/1246452?utm_medium=c2c_referral" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-brandGold hover:bg-brandPurple hover:text-white border border-brandGold hover:border-brandPurple text-brandBlack hover:shadow-lg hover:shadow-brandPurple/50 font-bold text-sm tracking-wide transition-all shadow-md">
-                Book via Booksy
-              </a>
-            </div>
-          </div>
-
-          <!-- Take Down & Weave Installation -->
-          <div class="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
-            <div class="space-y-4">
-              <div class="flex items-center justify-between text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
-                <span>Extensions</span>
-                <i class="fa-solid fa-layer-group text-brandGold/50"></i>
-              </div>
-              <h4 class="text-lg font-bold font-serif text-white tracking-wide group-hover:text-brandGold transition-colors duration-300">Take Down &amp; Weave Installation</h4>
-              <div class="flex flex-wrap gap-2 pt-1 pb-2">
-                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border border-brandGold/40 text-brandGold bg-brandGold/5">$200+</span>
-              </div>
-              <p class="text-xs text-gray-400 font-light leading-relaxed font-sans">
-                Professional removal of your previous weave or braids, followed by a scalp cleanse, prep, and new full weave installation.
-              </p>
-            </div>
-            <div class="pt-5">
-              <a href="https://booksy.com/en-us/dl/show-business/1246452?utm_medium=c2c_referral" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-brandGold hover:bg-brandPurple hover:text-white border border-brandGold hover:border-brandPurple text-brandBlack hover:shadow-lg hover:shadow-brandPurple/50 font-bold text-sm tracking-wide transition-all shadow-md">
-                Book via Booksy
-              </a>
-            </div>
-          </div>
-
         </div>
-      </div>
 
-      <!-- CATEGORY 4: KIDS SERVICES -->
-      <div class="mt-16 space-y-6">
-        <div class="border-b border-brandGold/20 pb-2">
-          <h3 class="text-xl sm:text-2xl font-bold font-serif text-white flex items-center space-x-3">
-            <span class="text-brandGold"><i class="fa-regular fa-smile"></i></span>
-            <span>Kids Services</span>
-          </h3>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-
-          <!-- Kids Cornrows (Without Extensions) -->
-          <div class="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
-            <div class="space-y-4">
-              <div class="flex items-center justify-between text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
-                <span>Kids</span>
-                <i class="fa-regular fa-smile text-brandGold/50"></i>
-              </div>
-              <h4 class="text-lg font-bold font-serif text-white tracking-wide group-hover:text-brandGold transition-colors duration-300">Kids Cornrows (Without Extensions)</h4>
-              <div class="flex flex-wrap gap-2 pt-1 pb-2">
-                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border border-brandGold/40 text-brandGold bg-brandGold/5">$50+</span>
-              </div>
-              <p class="text-xs text-gray-400 font-light leading-relaxed font-sans">
-                Gentle, neat cornrows for children using their natural hair. Cute, protective, and easy to maintain.
-              </p>
-            </div>
-            <div class="pt-5">
-              <a href="https://booksy.com/en-us/dl/show-business/1246452?utm_medium=c2c_referral" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-brandGold hover:bg-brandPurple hover:text-white border border-brandGold hover:border-brandPurple text-brandBlack hover:shadow-lg hover:shadow-brandPurple/50 font-bold text-sm tracking-wide transition-all shadow-md">
-                Book via Booksy
-              </a>
-            </div>
-          </div>
-
-          <!-- Kids Cornrows (With Extensions) -->
-          <div class="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
-            <div class="space-y-4">
-              <div class="flex items-center justify-between text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
-                <span>Kids</span>
-                <i class="fa-regular fa-smile text-brandGold/50"></i>
-              </div>
-              <h4 class="text-lg font-bold font-serif text-white tracking-wide group-hover:text-brandGold transition-colors duration-300">Kids Cornrows (With Extensions)</h4>
-              <div class="flex flex-wrap gap-2 pt-1 pb-2">
-                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border border-brandGold/40 text-brandGold bg-brandGold/5">$100+</span>
-              </div>
-              <p class="text-xs text-gray-400 font-light leading-relaxed font-sans">
-                Beautiful children's cornrows styled with extensions for added length, volume, or fun colorful highlights.
-              </p>
-            </div>
-            <div class="pt-5">
-              <a href="https://booksy.com/en-us/dl/show-business/1246452?utm_medium=c2c_referral" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-brandGold hover:bg-brandPurple hover:text-white border border-brandGold hover:border-brandPurple text-brandBlack hover:shadow-lg hover:shadow-brandPurple/50 font-bold text-sm tracking-wide transition-all shadow-md">
-                Book via Booksy
-              </a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- CATEGORY 5: CONSULTATIONS & TREATMENTS -->
-      <div class="mt-16 space-y-6">
-        <div class="border-b border-brandGold/20 pb-2">
-          <h3 class="text-xl sm:text-2xl font-bold font-serif text-white flex items-center space-x-3">
-            <span class="text-brandGold"><i class="fa-regular fa-comments"></i></span>
-            <span>Consultations &amp; Treatments</span>
-          </h3>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-
-          <!-- Standard Consultation -->
-          <div class="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
-            <div class="space-y-4">
-              <div class="flex items-center justify-between text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
-                <span>Consultation</span>
-                <i class="fa-regular fa-comments text-brandGold/50"></i>
-              </div>
-              <h4 class="text-lg font-bold font-serif text-white tracking-wide group-hover:text-brandGold transition-colors duration-300">Standard Consultation</h4>
-              <div class="flex flex-wrap gap-2 pt-1 pb-2">
-                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border border-brandGold/40 text-brandGold bg-brandGold/5">$30</span>
-              </div>
-              <p class="text-xs text-gray-400 font-light leading-relaxed font-sans">
-                Meet with Awa to analyze your hair health, discuss desired styles, custom sizing, and plan your next appointment.
-              </p>
-            </div>
-            <div class="pt-5">
-              <a href="https://booksy.com/en-us/dl/show-business/1246452?utm_medium=c2c_referral" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-brandGold hover:bg-brandPurple hover:text-white border border-brandGold hover:border-brandPurple text-brandBlack hover:shadow-lg hover:shadow-brandPurple/50 font-bold text-sm tracking-wide transition-all shadow-md">
-                Book via Booksy
-              </a>
-            </div>
-          </div>
-
-          <!-- Natural Hair Growth Consultation -->
-          <div class="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
-            <div class="space-y-4">
-              <div class="flex items-center justify-between text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
-                <span>Consultation</span>
-                <i class="fa-regular fa-comments text-brandGold/50"></i>
-              </div>
-              <h4 class="text-lg font-bold font-serif text-white tracking-wide group-hover:text-brandGold transition-colors duration-300">Natural Hair Growth Consultation</h4>
-              <div class="flex flex-wrap gap-2 pt-1 pb-2">
-                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border border-green-500/40 text-green-400 bg-green-500/5">FREE</span>
-              </div>
-              <p class="text-xs text-gray-400 font-light leading-relaxed font-sans">
-                Dedicated, complimentary session focusing on your hair health, growth goals, and organic care routines.
-              </p>
-            </div>
-            <div class="pt-5">
-              <a href="https://wa.me/15055550199?text=Hello%20Awa,%20I%20would%20like%20to%20inquire%20about%20a%20Natural%20Hair%20Growth%20Consultation." target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-[#25D366] hover:bg-[#20ba5a] text-white hover:shadow-lg hover:shadow-green-500/30 font-bold text-sm tracking-wide transition-all shadow-md border border-[#25D366] hover:text-white flex items-center justify-center space-x-1">
-                <i class="fa-brands fa-whatsapp text-sm"></i>
-                <span>Inquire on WhatsApp</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- Scalp Massage -->
-          <div class="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between gold-glow-hover transition-all duration-300 relative group border border-brandGold/10">
-            <div class="space-y-4">
-              <div class="flex items-center justify-between text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
-                <span>Treatment</span>
-                <i class="fa-regular fa-comments text-brandGold/50"></i>
-              </div>
-              <h4 class="text-lg font-bold font-serif text-white tracking-wide group-hover:text-brandGold transition-colors duration-300">Scalp Massage</h4>
-              <div class="flex flex-wrap gap-2 pt-1 pb-2">
-                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border border-brandGold/40 text-brandGold bg-brandGold/5">$30</span>
-                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-white/10 text-gray-300 text-[10px]">
-                  <i class="fa-solid fa-circle-info mr-1"></i> +$15 for extended time
-                </span>
-              </div>
-              <p class="text-xs text-gray-400 font-light leading-relaxed font-sans">
-                Relaxing, stimulating scalp massage with organic herbal oils to increase blood flow and support natural hair growth.
-              </p>
-            </div>
-            <div class="pt-5">
-              <a href="https://booksy.com/en-us/dl/show-business/1246452?utm_medium=c2c_referral" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2.5 rounded-xl bg-brandGold hover:bg-brandPurple hover:text-white border border-brandGold hover:border-brandPurple text-brandBlack hover:shadow-lg hover:shadow-brandPurple/50 font-bold text-sm tracking-wide transition-all shadow-md">
-                Book via Booksy
-              </a>
-            </div>
-          </div>
-
-        </div>
       </div>
 
     </div>
@@ -2098,6 +2231,45 @@
       } else {
         const filtered = PRODUCTS.filter(p => p.category === category);
         renderProducts(filtered);
+      }
+    }
+    // --- ACCORDION LOGIC ---
+    function toggleAccordion(categoryId) {
+      const content = document.getElementById(`accordion-content-${categoryId}`);
+      const chevron = document.getElementById(`accordion-chevron-${categoryId}`);
+      const isExpanded = content.classList.contains('expanded');
+      
+      // Collapse all other panels
+      const allContents = document.querySelectorAll('[id^="accordion-content-"]');
+      const allChevrons = document.querySelectorAll('[id^="accordion-chevron-"]');
+      allContents.forEach((c, idx) => {
+        const relatedChevron = allChevrons[idx];
+        if (c.id !== `accordion-content-${categoryId}` && c.classList.contains('expanded')) {
+          c.style.maxHeight = c.scrollHeight + 'px';
+          c.offsetHeight; // force reflow
+          c.style.maxHeight = '0px';
+          c.classList.remove('expanded');
+          if (relatedChevron) {
+            relatedChevron.style.transform = 'rotate(0deg)';
+          }
+        }
+      });
+
+      if (isExpanded) {
+        content.style.maxHeight = content.scrollHeight + 'px';
+        content.offsetHeight; // force reflow
+        content.style.maxHeight = '0px';
+        content.classList.remove('expanded');
+        chevron.style.transform = 'rotate(0deg)';
+      } else {
+        content.classList.add('expanded');
+        content.style.maxHeight = content.scrollHeight + 'px';
+        chevron.style.transform = 'rotate(180deg)';
+        setTimeout(() => {
+          if (content.classList.contains('expanded')) {
+            content.style.maxHeight = 'none';
+          }
+        }, 400);
       }
     }
 
